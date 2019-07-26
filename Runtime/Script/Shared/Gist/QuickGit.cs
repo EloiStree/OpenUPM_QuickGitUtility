@@ -310,7 +310,12 @@ public static class QuickGit
     public static bool GetGitUrl(string directoryPath, out string url)
     {
         url = "";
+        if (string.IsNullOrEmpty(directoryPath))
+            return false;
         string filePath = directoryPath + "/.git/config";
+        if (!File.Exists(filePath))
+            return false;
+
         string[] lines = File.ReadAllLines(filePath);
         string gitUrl = "";
         for (int i = 0; i < lines.Length; i++)
