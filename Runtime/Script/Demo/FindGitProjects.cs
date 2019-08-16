@@ -15,4 +15,8 @@ public class FindGitProjects : MonoBehaviour
         m_gitLinksPath = QuickGit.GetAllFolders(m_directory,true);
         m_gitLinks = QuickGit.GetGitProjectsInDirectory(m_directory);
     }
+
+    public void SayHello() {
+        //Delete me after exercise.
+    }
 }
