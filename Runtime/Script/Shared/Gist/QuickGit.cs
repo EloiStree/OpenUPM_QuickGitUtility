@@ -59,6 +59,39 @@ public static class QuickGit
     {
         return GetGitProjectsInDirectory( GetAllFolders(directoryPath, true) );
     }
+
+    public static string GetGitRootInParent(string currentPath)
+    {
+       
+        while (!string.IsNullOrEmpty(currentPath)) {
+            if (IsFolderContainGitProject(currentPath))
+                return currentPath;
+            currentPath = GoUpInPath(currentPath);
+        }
+        return null;
+
+    }
+
+    private static string GoUpInPath(string currentPath)
+    {
+        int lastIndex = currentPath.LastIndexOf('/');
+        if(lastIndex<0)
+            lastIndex = currentPath.LastIndexOf('\\');
+        if (lastIndex < 0)
+            return "";
+        return currentPath.Substring(0, lastIndex);
+    }
+
+    public static bool IsGitOustideProject(string currentPath)
+    {
+        throw new System.NotImplementedException();
+        
+    }
+    public static bool IsGitInsideProject(string currentPath)
+    {
+        return !IsGitOustideProject(currentPath);
+    }
+
     public static List<GitLinkOnDisk> GetGitProjectsInDirectory(string[] directoriesPath)
     {
         List<GitLinkOnDisk> packages = new List<GitLinkOnDisk>();
@@ -72,9 +105,12 @@ public static class QuickGit
         return packages;
     }
    
-    private static bool IsFolderContainGitProject(string p)
+    private static bool IsFolderContainGitProject(string directoryPath)
     {
-        string[] directories = Directory.GetDirectories(p);
+        if (!Directory.Exists(directoryPath))
+            return false;
+
+        string[] directories = Directory.GetDirectories(directoryPath);
         for (int i = 0; i < directories.Length; i++)
         {
             
@@ -91,8 +127,27 @@ public static class QuickGit
         }
         return false;
     }
-    
 
+    public static bool IsGitFolderWihtUrl(string directoryPath)
+    {
+        if (!IsGitFolder(directoryPath))
+            return false;
+        string url = "";
+        GetGitUrl(directoryPath,out url);
+        return string.IsNullOrWhiteSpace(url);
+    }
+
+    public static bool IsFolderEmpty(string whereGitIs)
+    {
+        if (!Directory.Exists(whereGitIs))
+            return false;
+        return Directory.GetFiles(whereGitIs).Length <= 0;
+    }
+
+    public static bool IsGitFolder(string directoryPath)
+    {
+        return IsFolderContainGitProject(directoryPath);
+    }
 
     private static void FindRemoveFilesIn(ref List<string> folders, string toFound)
     {
@@ -103,12 +158,18 @@ public static class QuickGit
         }
     }
 
+   
+  
+
     public static string [] GetAllFolders(string folderPath, bool containGivenFolder) {
         List<string> pathList = Directory.GetDirectories(folderPath, "*", SearchOption.AllDirectories).ToList();
         if (containGivenFolder)
             pathList.Add(folderPath);
         return pathList.ToArray();
     }
+
+    
+
     public static void OpenCmd(string gitDirectoryPath)
     {
         if (gitDirectoryPath.Length < 2) return;
@@ -132,35 +193,74 @@ public static class QuickGit
                 "git clone "+ gitUrl+ " "+ gitDirectoryPath
           }, gitDirectoryPath);
     }
+
     public static void Pull(string gitDirectoryPath)
     {
         RunCommands(new string[] {
                 "git pull"
           }, gitDirectoryPath);
     }
+    public static void Add(string gitDirectoryPath)
+    {
+        RunCommands(new string[] {
+                "git add -A"
+          }, gitDirectoryPath);
+    }
+    public static void Commit(string gitDirectoryPath, string commitDescription = "")
+    {
+        if (string.IsNullOrWhiteSpace(commitDescription))
+            commitDescription = GetTime();
+        RunCommands(new string[] {
+                "git commit -m \"Save: " + commitDescription + "\""
+          }, gitDirectoryPath);
+    }
 
+    private static string GetTime()
+    {
+        return DateTime.Now.ToString("MM\\/dd\\/yyyy h\\:mm tt");
+    }
+
+    public static void Push(string gitDirectoryPath)
+    {
+        RunCommands(new string[] {
+                "git push"
+          }, gitDirectoryPath);
+    }
     public static bool m_debugState = false;
     public static void  SetDebugOn(bool useDebug)
     {
         m_debugState = useDebug;
     }
     public static bool GetDebugState() { return m_debugState; }
-
-    public static void PullAddCommitAndPush(string gitDirectoryPath, string commitDescription = "none")
+    public static void AddCommitPull(string gitDirectoryPath, string commitDescription = "")
     {
+        if (string.IsNullOrWhiteSpace(commitDescription))
+            commitDescription = GetTime();
         RunCommands(new string[] {
-                "git add .",
+                "git add -A",
+                "git commit -m \"Save: " + commitDescription + "\"",
+                "git pull"
+          }, gitDirectoryPath);
+    }
+    public static void PullPushWithAddAndCommit(string gitDirectoryPath, string commitDescription = "")
+    {
+        if (string.IsNullOrWhiteSpace(commitDescription))
+            commitDescription = GetTime();
+        RunCommands(new string[] {
+                "git add -A",
                 "git commit -m \"Save: " + commitDescription + "\"",
                 "git pull",
-                "git add .",
+                "git add -A",
                 "git commit -m \"Merge: "+ commitDescription + "\"",
                 "git push"
           }, gitDirectoryPath);
     }
-    public static void AddCommitAndPush(string gitDirectoryPath, string commitDescription = "none")
+    public static void AddCommitAndPush(string gitDirectoryPath, string commitDescription = "")
     {
+        if (string.IsNullOrWhiteSpace(commitDescription))
+            commitDescription = GetTime();
         RunCommands(new string[] {
-                "git add .",
+                "git add -A",
                 "git commit -m \"" + commitDescription + "\"",
                 "git push"
           }, gitDirectoryPath);
@@ -323,11 +423,26 @@ public static class QuickGit
             int urlIndex = lines[i].IndexOf("url =");
             if (urlIndex >= 0)
             {
-                gitUrl = lines[i].Substring(urlIndex + 5).Trim();
+                gitUrl = lines[i].Substring(urlIndex + "url =".Length).Trim();
                 break;
             }
 
         }
+        if (gitUrl == "")
+        {
+            for (int i = 0; i < lines.Length; i++)
+            {
+                int urlIndex = lines[i].IndexOf("remote =");
+                if (urlIndex >= 0)
+                {
+                    gitUrl = lines[i].Substring(urlIndex + "remote =".Length).Trim();
+                    break;
+                }
+
+            }
+
+        }
+
         url = gitUrl;
         return !string.IsNullOrEmpty(url);
     }
