@@ -60,15 +60,17 @@ public static class QuickGit
         return GetGitProjectsInDirectory( GetAllFolders(directoryPath, true) );
     }
 
-    public static string GetGitRootInParent(string currentPath)
+    public static string GetGitRootInParent(string currentPath, out bool hasGitInParent)
     {
-       
+        hasGitInParent = false;
         while (!string.IsNullOrEmpty(currentPath)) {
-            if (IsFolderContainGitProject(currentPath))
+            if (IsFolderContainGitProject(currentPath)) {
+                hasGitInParent = true;
                 return currentPath;
+            }
             currentPath = GoUpInPath(currentPath);
         }
-        return null;
+        return "";
 
     }
 
@@ -90,6 +92,63 @@ public static class QuickGit
     public static bool IsGitInsideProject(string currentPath)
     {
         return !IsGitOustideProject(currentPath);
+    }
+
+    public static void DisplayEditorCommands(string gitDirectory)
+    {
+#if UNITY_EDITOR
+        
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Add -a"))
+            {
+                QuickGit.Add(gitDirectory);
+            }
+            if (GUILayout.Button("Commit"))
+            {
+                QuickGit.Commit(gitDirectory);
+            }
+            if (GUILayout.Button("Pull"))
+            {
+                QuickGit.Pull(gitDirectory);
+            }
+            if (GUILayout.Button("Push"))
+            {
+                QuickGit.Push(gitDirectory);
+            }
+
+            GUILayout.EndHorizontal();
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Add>Commit>Pull"))
+            {
+                QuickGit.AddCommitAndPush(gitDirectory);
+            }
+            if (GUILayout.Button("A>C>Pull + A>C>push"))
+            {
+                QuickGit.PullPushWithAddAndCommit(gitDirectory);
+            }
+
+            GUILayout.EndHorizontal();
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Open explorer"))
+            {
+                Application.OpenURL(gitDirectory);
+            }
+            if (GUILayout.Button("See Status"))
+            {
+                QuickGit.OpenCmd(gitDirectory);
+            }
+            string url;
+            QuickGit.GetGitUrl(gitDirectory, out url);
+            if (GUILayout.Button("Go to Server"))
+            {
+                Application.OpenURL(url);
+            }
+
+            GUILayout.EndHorizontal();
+        
+
+#endif
+
     }
 
     public static List<GitLinkOnDisk> GetGitProjectsInDirectory(string[] directoriesPath)
@@ -114,10 +173,12 @@ public static class QuickGit
         for (int i = 0; i < directories.Length; i++)
         {
             
-            if (directories[i].IndexOf("/.git/") == directories[i].Length - 6
-                || directories[i].IndexOf("\\.git\\") == directories[i].Length - 6
-                || directories[i].IndexOf("/.git") == directories[i].Length - 5
-                || directories[i].IndexOf("\\.git") == directories[i].Length - 5)
+            if (
+                //directories[i].ToLower().IndexOf("/.git/") == directories[i].Length - 6
+                //|| directories[i].ToLower().IndexOf("\\.git\\") == directories[i].Length - 6
+                 directories[i].ToLower().IndexOf("/.git") == directories[i].Length - 5
+                ||
+                directories[i].ToLower().IndexOf("\\.git") == directories[i].Length - 5)
             {
 
                 return true;
