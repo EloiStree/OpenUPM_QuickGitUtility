@@ -469,12 +469,12 @@ public static class QuickGit
         RunCommands(files.ToArray(), directoryPath);
     }
    
-    public static bool GetGitUrl(string directoryPath, out string url)
+    public static bool GetGitUrl(string rootDirectoryPath, out string url)
     {
         url = "";
-        if (string.IsNullOrEmpty(directoryPath))
+        if (string.IsNullOrEmpty(rootDirectoryPath))
             return false;
-        string filePath = directoryPath + "/.git/config";
+        string filePath = rootDirectoryPath + "/.git/config";
         if (!File.Exists(filePath))
             return false;
 
