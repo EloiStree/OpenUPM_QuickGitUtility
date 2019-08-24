@@ -97,7 +97,7 @@ public static class QuickGit
     public static void DisplayEditorCommands(string gitDirectory)
     {
 #if UNITY_EDITOR
-        
+        if (IsGitFolder(gitDirectory)) {
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Add -a"))
             {
@@ -146,6 +146,7 @@ public static class QuickGit
 
             GUILayout.EndHorizontal();
         
+        }
 
 #endif
 
