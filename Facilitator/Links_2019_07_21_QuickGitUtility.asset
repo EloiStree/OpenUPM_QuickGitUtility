@@ -13,4 +13,14 @@ MonoBehaviour:
   m_Name: Links_2019_07_21_QuickGitUtility
   m_EditorClassIdentifier: 
   m_data:
-    m_packageLinks: []
+    m_packageLinks:
+    - m_name: d
+      m_pathOrLink: 
+    - m_name: d
+      m_pathOrLink: 
+    - m_name: a
+      m_pathOrLink: 
+    - m_name: er
+      m_pathOrLink: 
+    - m_name: sqdf
+      m_pathOrLink: 
