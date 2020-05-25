@@ -1,16 +1,17 @@
-
-{                                                                   
-            "name": "be.eloiexperiments.quickgitutilityeditor",          
-    "references": ["be.eloiexperiments.quickgitutility"
-],                                                              
-    "optionalUnityReferences": [],                                  
-    "includePlatforms": [                                           
-        "Editor"                                                    
-    ],                                                              
-    "excludePlatforms": [],                                         
-    "allowUnsafeCode": false,                                       
-    "overrideReferences": false,                                    
-    "precompiledReferences": [],                                    
-    "autoReferenced": true,                                         
-    "defineConstraints": []                                         
-}                                                                   
+{
+    "name": "be.eloiexperiments.quickgitutilityeditor",
+    "references": [
+        "be.eloistree.quickgitutility"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

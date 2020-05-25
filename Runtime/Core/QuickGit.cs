@@ -8,22 +8,65 @@ using UnityEngine;
 public static class QuickGit
 {
 
-    //public static void RemoveAllEmptyFolders()
-    //{
-    //}
+    public static void RemoveAllEmptyFolders(string wherePath)
+    {
+        RemoveGitKeepInFolders(wherePath);
+        string [] paths = GetAllFolders(wherePath, true);
+        foreach (var path in paths)
+        {
+            if (Directory.Exists(path)) {
+                string[] files = Directory.GetFiles(path);
+                if (files.Length == 0) { 
+                    Directory.Delete(path,true);
+                    if (File.Exists(path + ".meta"))
+                        File.Delete(path + ".meta");
+                }
+            }
+        }
+        CreateGitKeepInEmptyFolders(wherePath);
+    }
+    public static void CreateGitKeepInEmptyFolders(string wherePath, string keepTextContent = "Hey mon ami, tu aimes ça manger des patates ?")
+    {
+        string[] paths = GetAllFolders(wherePath, true);
+        foreach (var path in paths)
+        {
+            if (Directory.Exists(path) && Directory.GetFiles(path).Length == 0)
+            {
+                File.WriteAllText(path + "/.gitkeep", keepTextContent);
+            }
+        }
+    }
+    public static void RemoveGitKeepInFolders(string wherePath)
+    {
+        string[] paths = GetAllFolders(wherePath, true);
+        foreach (var path in paths)
+        {
+            if (Directory.Exists(path))
+            {
+                if (File.Exists(path + "/.gitkeep"))
+                    File.Delete(path + "/.gitkeep");
+            }
+        }
+    }
+    public static void RefreshGitKeepInEmptyFolder(string wherePath, string keepTextContent = "Hey mon ami, tu aimes ça manger des patates ?")
+    {
+        RemoveGitKeepInFolders(wherePath);
+        CreateGitKeepInEmptyFolders(wherePath);
+    }
+
     public static void AddFileInEmptyFolder(string folderPath)
     {
-        List<string> folders = GetAllFolders(folderPath,true).ToList();
-        FindRemoveFilesIn(ref folders,".git");
+        List<string> folders = GetAllFolders(folderPath, true).ToList();
+        FindRemoveFilesIn(ref folders, ".git");
         for (int i = 0; i < folders.Count; i++)
         {
             string path = folders[i];
-            string[] files= Directory.GetFiles(path);
+            string[] files = Directory.GetFiles(path);
             string emptyPath = path + "\\empty.txt";
             string emptyPathMeta = path + "\\empty.txt.meta";
-            files=Remove( files, emptyPathMeta, emptyPath);
-//            UnityEngine.Debug.Log("<> " + path + " : " + files.Length);
-            
+            files = Remove(files, emptyPathMeta, emptyPath);
+            //            UnityEngine.Debug.Log("<> " + path + " : " + files.Length);
+
             bool isEmpty = files.Length <= 0;
 
             if (isEmpty)
@@ -40,7 +83,7 @@ public static class QuickGit
         }
     }
 
-    private static string[] Remove( string[] files, string emptyPathMeta, string emptyPath)
+    private static string[] Remove(string[] files, string emptyPathMeta, string emptyPath)
     {
         List<string> f = new List<string>();
         for (int i = 0; i < files.Length; i++)
@@ -55,144 +98,111 @@ public static class QuickGit
         return f.ToArray();
     }
 
-    public static List<GitLinkOnDisk> GetGitProjectsInDirectory(string directoryPath)
+    public static void GetGitsInDirectory(string directoryPath, out List<GitLinkOnDisk> found, bool withChildrensFolders = true)
     {
-        return GetGitProjectsInDirectory( GetAllFolders(directoryPath, true) );
+        found =  GetGitsInGivenDirectories(GetAllFolders(directoryPath, withChildrensFolders));
     }
 
-    public static string GetGitRootInParent(string currentPath, out bool hasGitInParent)
+
+    public static void GetGitsFromLeaf(List<GitLinkOnDisk> givenGits, out GitLinkOnDisk gitOnTopOfPath)
     {
-        hasGitInParent = false;
-        while (!string.IsNullOrEmpty(currentPath)) {
-            if (IsFolderContainGitProject(currentPath)) {
-                hasGitInParent = true;
-                return currentPath;
+        if (givenGits.Count <=0) gitOnTopOfPath = null;
+        else
+        gitOnTopOfPath = givenGits.OrderByDescending(k => k.GetDirectoryPath().Length).First();
+    }
+    public static void GetGitsOnFromRoot(List<GitLinkOnDisk> givenGits, out GitLinkOnDisk gitOnTopOfPath)
+    {
+        if (givenGits.Count <= 0) gitOnTopOfPath = null;
+        else
+            gitOnTopOfPath = givenGits.OrderBy(k => k.GetDirectoryPath().Length).First();
+    }
+    public enum PathReadDirection { RootToLeaf, LeafToRoot}
+    public static void GetGitInParents(string path, PathReadDirection readMode, out GitLinkOnDisk git) {
+        List<GitLinkOnDisk> links;
+        GetGitsInParents(path, out links);
+        if (readMode == PathReadDirection.RootToLeaf)
+            GetGitsOnFromRoot(links, out git);
+        else 
+            GetGitsFromLeaf(links, out git);
+    }
+    public static void GetGitsInParents(string path, out List<GitLinkOnDisk> links)
+    {
+        links = new List<GitLinkOnDisk>();
+        string[] parentsPath = UnityPaths.GetAllParents(path, true);
+        for (int i = 0; i < parentsPath.Length; i++)
+        {
+            if (IsPathContaintGitRoot(parentsPath[i]))
+            {
+                GitLinkOnDisk gd = new GitLinkOnDisk(parentsPath[i]);
+                links.Add(gd);
             }
-            currentPath = GoUpInPath(currentPath);
         }
-        return "";
+    }
+
+    private static bool IsPathContaintGitRoot(object path)
+    {
+        return Directory.Exists(path + "/.git");
+    }
+
+    public static bool IsPathInAssetFolder(string currentPath)
+    {
+        currentPath = currentPath.Replace("\\", "/");
+        string path = Directory.GetCurrentDirectory().Replace("\\", "/") + "/Assets";
+        return currentPath.IndexOf(path) > -1;
+    }
+    public static bool IsPathOutsideOfAssetFolder(string currentPath)
+    {
+        return !IsPathInAssetFolder(currentPath);
+    }
+    public static bool IsPathInProjectFolder(string currentPath)
+    {
+        currentPath = currentPath.Replace("\\", "/");
+        string path = Directory.GetCurrentDirectory().Replace("\\", "/") ;
+        return currentPath.IndexOf(path) > -1;
 
     }
 
-    private static string GoUpInPath(string currentPath)
-    {
-        int lastIndex = currentPath.LastIndexOf('/');
-        if(lastIndex<0)
-            lastIndex = currentPath.LastIndexOf('\\');
-        if (lastIndex < 0)
-            return "";
-        return currentPath.Substring(0, lastIndex);
-    }
+   
 
-    public static bool IsGitOustideProject(string currentPath)
+    public static bool IsPathOutsideOfProjectFolder(string currentPath)
     {
-        throw new System.NotImplementedException();
-        
+        return !IsPathInProjectFolder(currentPath);
     }
     public static bool IsGitInsideProject(string currentPath)
     {
-        return !IsGitOustideProject(currentPath);
+        return !IsPathOutsideOfAssetFolder(currentPath);
     }
 
-    public static void DisplayEditorCommands(string gitDirectory)
-    {
-#if UNITY_EDITOR
-        if (IsGitFolder(gitDirectory)) {
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Add -a"))
-            {
-                QuickGit.Add(gitDirectory);
-            }
-            if (GUILayout.Button("Commit"))
-            {
-                QuickGit.Commit(gitDirectory);
-            }
-            if (GUILayout.Button("Pull"))
-            {
-                QuickGit.Pull(gitDirectory);
-            }
-            if (GUILayout.Button("Push"))
-            {
-                QuickGit.Push(gitDirectory);
-            }
-
-            GUILayout.EndHorizontal();
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Add>Commit>Pull"))
-            {
-                QuickGit.AddCommitAndPush(gitDirectory);
-            }
-            if (GUILayout.Button("A>C>Pull + A>C>push"))
-            {
-                QuickGit.PullPushWithAddAndCommit(gitDirectory);
-            }
-
-            GUILayout.EndHorizontal();
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Open explorer"))
-            {
-                Application.OpenURL(gitDirectory);
-            }
-            if (GUILayout.Button("See Status"))
-            {
-                QuickGit.OpenCmd(gitDirectory);
-            }
-            string url;
-            QuickGit.GetGitUrl(gitDirectory, out url);
-            if (GUILayout.Button("Go to Server"))
-            {
-                Application.OpenURL(url);
-            }
-
-            GUILayout.EndHorizontal();
-        
-        }
-
-#endif
-
-    }
-
-    public static List<GitLinkOnDisk> GetGitProjectsInDirectory(string[] directoriesPath)
+    public static List<GitLinkOnDisk> GetGitsInGivenDirectories(string[] directoriesPath)
     {
         List<GitLinkOnDisk> packages = new List<GitLinkOnDisk>();
         for (int i = directoriesPath.Length-1; i >= 0; i--)
         {
+
             string p = directoriesPath[i];
-            bool isGitFolder = IsFolderContainGitProject(p);
+            bool isGitFolder = IsPathHasGitRootFolder(p);
             if (isGitFolder)
                 packages.Add(new GitLinkOnDisk(p));
         }
         return packages;
     }
-   
-    private static bool IsFolderContainGitProject(string directoryPath)
-    {
-        if (!Directory.Exists(directoryPath))
-            return false;
 
-        string[] directories = Directory.GetDirectories(directoryPath);
-        for (int i = 0; i < directories.Length; i++)
-        {
-            
-            if (
-                //directories[i].ToLower().IndexOf("/.git/") == directories[i].Length - 6
-                //|| directories[i].ToLower().IndexOf("\\.git\\") == directories[i].Length - 6
-                 directories[i].ToLower().IndexOf("/.git") == directories[i].Length - 5
+
+    public static bool IsPathHasGitRootFolder(string directoryPath) {
+        return Directory.Exists(directoryPath + "/.git");
+    }
+
+    public static bool IsPathIsGitRootFormat(string directoryPath)
+    {if (directoryPath.Length < 6) return false;
+
+        return directoryPath.ToLower().IndexOf("/.git") == directoryPath.Length - 5
                 ||
-                directories[i].ToLower().IndexOf("\\.git") == directories[i].Length - 5)
-            {
-
-                return true;
-            }
-
-
-        }
-        return false;
+                directoryPath.ToLower().IndexOf("\\.git") == directoryPath.Length - 5;
     }
 
     public static bool IsGitFolderWihtUrl(string directoryPath)
     {
-        if (!IsGitFolder(directoryPath))
+        if (!IsPathHasGitRootFolder(directoryPath))
             return false;
         string url = "";
         GetGitUrl(directoryPath,out url);
@@ -206,10 +216,7 @@ public static class QuickGit
         return Directory.GetFiles(whereGitIs).Length <= 0;
     }
 
-    public static bool IsGitFolder(string directoryPath)
-    {
-        return IsFolderContainGitProject(directoryPath);
-    }
+   
 
     private static void FindRemoveFilesIn(ref List<string> folders, string toFound)
     {
@@ -224,6 +231,9 @@ public static class QuickGit
   
 
     public static string [] GetAllFolders(string folderPath, bool containGivenFolder) {
+        if (string.IsNullOrEmpty(folderPath.Trim())) 
+            return new string[0];
+
         List<string> pathList = Directory.GetDirectories(folderPath, "*", SearchOption.AllDirectories).ToList();
         if (containGivenFolder)
             pathList.Add(folderPath);
@@ -251,20 +261,20 @@ public static class QuickGit
     }
     public static void Clone(string gitUrl, string gitDirectoryPath)
     {
-        RunCommands(new string[] {
+        WindowCMD.RunCommands(new string[] {
                 "git clone "+ gitUrl+ " "+ gitDirectoryPath
           }, gitDirectoryPath);
     }
 
     public static void Pull(string gitDirectoryPath)
     {
-        RunCommands(new string[] {
+        WindowCMD.RunCommands(new string[] {
                 "git pull"
           }, gitDirectoryPath);
     }
     public static void Add(string gitDirectoryPath)
     {
-        RunCommands(new string[] {
+        WindowCMD.RunCommands(new string[] {
                 "git add -A"
           }, gitDirectoryPath);
     }
@@ -272,7 +282,7 @@ public static class QuickGit
     {
         if (string.IsNullOrWhiteSpace(commitDescription))
             commitDescription = GetTime();
-        RunCommands(new string[] {
+        WindowCMD.RunCommands(new string[] {
                 "git commit -m \"Save: " + commitDescription + "\""
           }, gitDirectoryPath);
     }
@@ -284,7 +294,7 @@ public static class QuickGit
 
     public static void Push(string gitDirectoryPath)
     {
-        RunCommands(new string[] {
+        WindowCMD.RunCommands(new string[] {
                 "git push"
           }, gitDirectoryPath);
     }
@@ -298,7 +308,7 @@ public static class QuickGit
     {
         if (string.IsNullOrWhiteSpace(commitDescription))
             commitDescription = GetTime();
-        RunCommands(new string[] {
+        WindowCMD.RunCommands(new string[] {
                 "git add -A",
                 "git commit -m \"Save: " + commitDescription + "\"",
                 "git pull"
@@ -308,7 +318,7 @@ public static class QuickGit
     {
         if (string.IsNullOrWhiteSpace(commitDescription))
             commitDescription = GetTime();
-        RunCommands(new string[] {
+        WindowCMD.RunCommands(new string[] {
                 "git add -A",
                 "git commit -m \"Save: " + commitDescription + "\"",
                 "git pull",
@@ -321,62 +331,19 @@ public static class QuickGit
     {
         if (string.IsNullOrWhiteSpace(commitDescription))
             commitDescription = GetTime();
-        RunCommands(new string[] {
+        WindowCMD.RunCommands(new string[] {
                 "git add -A",
                 "git commit -m \"" + commitDescription + "\"",
                 "git push"
           }, gitDirectoryPath);
     }
 
-    static void RunCommands(string[] cmds, string workingDirectory)
-    {
-        if (workingDirectory.Length < 2) return;
-
-        char disk = 'C';
-        if (workingDirectory[1] == ':')
-            disk = workingDirectory[0];
-
-        var process = new Process();
-        var psi = new ProcessStartInfo();
-        psi.FileName = "cmd.exe";
-        psi.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-        psi.RedirectStandardInput = true;
-        psi.RedirectStandardOutput = true;
-        psi.RedirectStandardError = true;
-        psi.UseShellExecute = false;
-        psi.WorkingDirectory = workingDirectory;
-        process.StartInfo = psi;
-        process.Start();
-        process.OutputDataReceived += (sender, e) => {
-            if(GetDebugState())
-                UnityEngine.Debug.Log(e.Data); };
-        process.ErrorDataReceived += (sender, e) => {
-            if (GetDebugState())
-                UnityEngine.Debug.Log(e.Data); };
-        process.BeginOutputReadLine();
-        process.BeginErrorReadLine();
-
-
-
-        using (StreamWriter sw = process.StandardInput)
-        {
-            sw.WriteLine(disk + ":");
-            sw.WriteLine("cd " + workingDirectory);
-            foreach (var cmd in cmds)
-            {
-                if (GetDebugState())
-                    UnityEngine.Debug.Log("> " + cmd);
-                sw.WriteLine(cmd);
-            }
-        }
-        process.WaitForExit();
-    }
 
     public static void CreateLocal(string directoryPath)
     {
         Directory.CreateDirectory(directoryPath);
         File.WriteAllText(directoryPath + "/test.md", "Test");
-        RunCommands(new string[] {
+        WindowCMD.RunCommands(new string[] {
                 "git init .",
                 "git add .",
                 "git commit -m \"First commit\"",
@@ -432,7 +399,7 @@ public static class QuickGit
         //https://docs.gitlab.com/ee/gitlab-basics/create-project.html
         //git push --set-upstream https://gitlab.example.com/namespace/nonexistent-project.git master
         //git push --set-upstream address/your-project.git
-        RunCommands(new string[] {
+        WindowCMD.RunCommands(new string[] {
                 "git add .",
                 "git commit -m \"Local to Remote\"",
                 "git push --set-upstream https://gitlab.com/"+userName+"/"+newRepoName+".git master",
@@ -444,7 +411,7 @@ public static class QuickGit
     {
         RemoveFiles(directoryPath);
 
-        RunCommands(new string[] {
+        WindowCMD.RunCommands(new string[] {
                 "del /S /F /AH "+directoryPath,
                 "rmdir "+directoryPath
           }, directoryPath);
@@ -466,7 +433,7 @@ public static class QuickGit
         List<string> files = new List<string>();
         files.AddRange(pathfiles);
         files.AddRange(pathfilesOwn);
-        RunCommands(files.ToArray(), directoryPath);
+        WindowCMD.RunCommands(files.ToArray(), directoryPath);
     }
    
     public static bool GetGitUrl(string rootDirectoryPath, out string url)
@@ -500,7 +467,6 @@ public static class QuickGit
                     gitUrl = lines[i].Substring(urlIndex + "remote =".Length).Trim();
                     break;
                 }
-
             }
 
         }
@@ -526,13 +492,43 @@ public class GitLinkOnDisk : GitLink
         QuickGit.GetGitUrl(directoryPath,out m_gitLink);
         this.m_projectDirectoryPath = directoryPath;
     }
-    
-    public void OpenFolder() {
-        if(Directory.Exists(m_projectDirectoryPath))
-          Application.OpenURL(m_projectDirectoryPath);
+
+    public void OpenFolder()
+    {
+        if (Directory.Exists(m_projectDirectoryPath))
+            Application.OpenURL(m_projectDirectoryPath);
+    }
+    public void OpenHost()
+    {
+            Application.OpenURL(m_gitLink);
     }
     public bool IsPathDefined() { return !string.IsNullOrWhiteSpace(m_projectDirectoryPath); }
 
+    public string GetDirectoryPath()
+    {
+        return m_projectDirectoryPath;
+    }
+
+    public bool Exist()
+    {
+        return Directory.Exists(m_projectDirectoryPath) && Directory.Exists(m_projectDirectoryPath+"/.git");
+    }
+
+    public string GetUrl()
+    {
+        return m_gitLink;
+    }
+
+    public string GetName()
+    {
+        int indexOf = m_gitLink.LastIndexOf("/");
+        if (indexOf < 0)
+            indexOf = m_gitLink.LastIndexOf("\\");
+        if (indexOf < 0)
+            indexOf = 0;
+        return m_gitLink.Substring(indexOf).Replace(".git", "")
+            .Replace("/", "").Replace("\\", "");
+    }
 }
 
 
