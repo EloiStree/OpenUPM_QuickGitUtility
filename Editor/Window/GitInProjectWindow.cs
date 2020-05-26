@@ -18,6 +18,7 @@ public class GitInProjectWindow : EditorWindow
         public bool[] m_displayprojectsInfoParent    = new bool[10];
         public bool m_inProject=true;
         public bool m_inParent=true;
+        internal Vector2 m_scollrPackagePosition = new Vector2();
 
         public Info(int dirtyBoringCode) {
             m_displayInfoInGitsInProject = new bool[dirtyBoringCode];
@@ -70,6 +71,8 @@ public class GitInProjectWindow : EditorWindow
     public int space=10;
     void OnGUI()
     {
+
+        m_info.m_scollrPackagePosition = GUILayout.BeginScrollView(m_info.m_scollrPackagePosition);
         if (m_info == null)
             m_info = new Info(50);
         if(GUILayout.Button("Refresh"))
@@ -113,8 +116,7 @@ public class GitInProjectWindow : EditorWindow
         }
 
         GUILayout.Space(space);
-
-      
+        GUILayout.EndScrollView();
 
     }
 

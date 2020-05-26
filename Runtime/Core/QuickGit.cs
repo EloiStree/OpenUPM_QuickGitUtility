@@ -83,6 +83,16 @@ public static class QuickGit
         }
     }
 
+    public static void GetGitInDirectory(string path, out GitLinkOnDisk gitLink, bool searchInChildens)
+    {
+        List<GitLinkOnDisk> gits;
+        GetGitsInDirectory(path, out gits, searchInChildens);
+        if (gits.Count > 0)
+            gitLink = gits[0];
+        else gitLink = null;
+
+    }
+
     private static string[] Remove(string[] files, string emptyPathMeta, string emptyPath)
     {
         List<string> f = new List<string>();
@@ -100,7 +110,11 @@ public static class QuickGit
 
     public static void GetGitsInDirectory(string directoryPath, out List<GitLinkOnDisk> found, bool withChildrensFolders = true)
     {
-        found =  GetGitsInGivenDirectories(GetAllFolders(directoryPath, withChildrensFolders));
+        found = GetGitsInGivenDirectories(GetAllFolders(directoryPath, withChildrensFolders, withChildrensFolders));
+    }
+    public static void GetGitsInDirectory(string directoryPath, out List<GitLinkOnDisk> found,bool useRootFolder , bool withChildrensFolders = true)
+    {
+        found = GetGitsInGivenDirectories(GetAllFolders(directoryPath, useRootFolder, withChildrensFolders));
     }
 
 
@@ -230,11 +244,11 @@ public static class QuickGit
    
   
 
-    public static string [] GetAllFolders(string folderPath, bool containGivenFolder) {
+    public static string [] GetAllFolders(string folderPath, bool containGivenFolder, bool withChildren=true) {
         if (string.IsNullOrEmpty(folderPath.Trim())) 
             return new string[0];
 
-        List<string> pathList = Directory.GetDirectories(folderPath, "*", SearchOption.AllDirectories).ToList();
+        List<string> pathList = Directory.GetDirectories(folderPath, "*", withChildren? SearchOption.AllDirectories: SearchOption.TopDirectoryOnly).ToList();
         if (containGivenFolder)
             pathList.Add(folderPath);
         return pathList.ToArray();

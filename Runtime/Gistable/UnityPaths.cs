@@ -18,6 +18,16 @@ public class UnityPaths
             return "";
         return currentPath.Substring(0, lastIndex);
     }
+
+    public static string StartByPoint( string text)
+    {
+        if (text.Length <= 0)
+            return ".";
+        if (text[0] != '.')
+            return "." + text;
+        return text;
+    }
+
     internal static string[] GetAllParents(string path, bool addGivenPath)
     {
         List<string> result = new List<string>();
@@ -32,6 +42,24 @@ public class UnityPaths
         }
         while (!hasFinish);
         return result.ToArray();
+    }
+
+    public static void GetPathOf(string whereToLook,string fileName, string[] extensions, out bool foundOne, out string filePathFound)
+    {
+        foundOne = false;
+        filePathFound = "";
+        for (int i = 0; i < extensions.Length; i++)
+        {
+            string path = whereToLook + "/" + fileName;
+            extensions[i] = StartByPoint( extensions[i]);
+            path += extensions[i];
+            if (File.Exists(path))
+            {
+                foundOne = true;
+                filePathFound = path;
+            }
+        }
+
     }
 
     internal static string[] Filter(string[] files, string[] notAuthorizedExtentsion)
