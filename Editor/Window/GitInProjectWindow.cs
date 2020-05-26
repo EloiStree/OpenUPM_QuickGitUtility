@@ -12,6 +12,7 @@ public class GitInProjectWindow : EditorWindow
     [SerializeField]
     public class Info
     {
+        public int m_tableCapacity=10;
         public bool[] m_displayInfoInGitsInProject   = new bool[10];
         public bool[] m_displayprojectsInfoInProject = new bool[10];
         public bool[] m_displayInfoInGitsParent      = new bool[10];
@@ -20,12 +21,13 @@ public class GitInProjectWindow : EditorWindow
         public bool m_inParent=true;
         internal Vector2 m_scollrPackagePosition = new Vector2();
 
-        public Info(int dirtyBoringCode) {
-            m_displayInfoInGitsInProject = new bool[dirtyBoringCode];
-            m_displayprojectsInfoInProject = new bool[dirtyBoringCode];
-            m_displayInfoInGitsParent = new bool[dirtyBoringCode];
-            m_displayprojectsInfoParent = new bool[dirtyBoringCode];
-            for (int i = 0; i < dirtyBoringCode; i++)
+        public Info(int maxSizeOfTableDirtyCode) {
+            m_tableCapacity = maxSizeOfTableDirtyCode;
+            m_displayInfoInGitsInProject = new bool[maxSizeOfTableDirtyCode];
+            m_displayprojectsInfoInProject = new bool[maxSizeOfTableDirtyCode];
+            m_displayInfoInGitsParent = new bool[maxSizeOfTableDirtyCode];
+            m_displayprojectsInfoParent = new bool[maxSizeOfTableDirtyCode];
+            for (int i = 0; i < maxSizeOfTableDirtyCode; i++)
             {
                 m_displayInfoInGitsInProject[i]  = true;
                 m_displayprojectsInfoInProject[i]= true;
@@ -96,6 +98,7 @@ public class GitInProjectWindow : EditorWindow
                 GUILayout.Label("None found");
             for (int i = 0; i < gits.Count; i++)
             {
+                if (i >= m_info.m_tableCapacity) break;
                 GitEditorDrawer.DisplayGitInfoWithCommand(gits[i], ref m_info.m_displayprojectsInfoParent[i], ref m_info.m_displayInfoInGitsParent[i]);
                 EditorGUILayout.Space();
             }
@@ -110,6 +113,7 @@ public class GitInProjectWindow : EditorWindow
                 GUILayout.Label("None found");
             for (int i = 0; i < gits.Count; i++)
             {
+                if (i >= m_info.m_tableCapacity) break;
                 GitEditorDrawer.DisplayGitInfoWithCommand(gits[i], ref m_info.m_displayprojectsInfoInProject[i], ref m_info.m_displayInfoInGitsInProject[i]);
                 EditorGUILayout.Space();
             }

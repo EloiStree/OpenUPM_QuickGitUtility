@@ -36,6 +36,7 @@ public static class QuickGit
             }
         }
     }
+
     public static void RemoveGitKeepInFolders(string wherePath)
     {
         string[] paths = GetAllFolders(wherePath, true);

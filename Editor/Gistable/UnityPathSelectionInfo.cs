@@ -20,6 +20,11 @@ public class UnityPathSelectionInfo
     public string GetFullPath() { return m_absolutePath; }
     public string GetFolderPath() { return Path.GetDirectoryName(m_absolutePath); }
 
+    public static void Get(out object m_pathFound, out object m_selector)
+    {
+        throw new NotImplementedException();
+    }
+
     public void Set(string relativePath)
     {
 
