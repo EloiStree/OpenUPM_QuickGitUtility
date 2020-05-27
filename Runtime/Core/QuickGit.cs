@@ -359,7 +359,6 @@ public static class QuickGit
     public static void CreateLocal(string directoryPath)
     {
         Directory.CreateDirectory(directoryPath);
-        File.WriteAllText(directoryPath + "/test.md", "Test");
         WindowCMD.RunCommands(new string[] {
                 "git init .",
                 "git add .",
