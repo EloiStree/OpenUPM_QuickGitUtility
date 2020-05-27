@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public static class QuickGit
 {
@@ -386,8 +388,11 @@ public static class QuickGit
     }
     public static void PushLocalToGitHub(string directoryPath, string userName, string newRepoName, out string gitCreatedUrl)
     {
-       throw new NotImplementedException("Impossible or not in my skills contact me if youknow how to do it. I tried for hours.");
-    //    if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(newRepoName))
+        UnityEngine.Debug.LogWarning("Push on GitHub is not implemented because of it security complexity");
+        gitCreatedUrl = "https://github.com/new?name="+newRepoName;
+
+   //     gitCreatedUrl = "https://github.com/"+userName+"/"+newRepoName+".git";
+        //  if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(newRepoName))
     //        gitCreatedUrl = "https://github.com/" + userName + "/" + newRepoName + ".git";
     //    else
     //        gitCreatedUrl = "";
@@ -490,6 +495,16 @@ public static class QuickGit
         return !string.IsNullOrEmpty(url);
     }
     public enum GitServer { GitHub, GitLab }
+
+    public static void GetLastRevision(string absolutePathOfRepository,out  bool found, out  string revisionId)
+    {
+        string path = absolutePathOfRepository+ "/.git/refs/heads/master";
+        revisionId = "";
+        found = File.Exists(path);
+        if (found)
+            revisionId = File.ReadAllText(path).Trim();
+            
+    }
 }
 [System.Serializable]
 public class GitLink
@@ -524,6 +539,13 @@ public class GitLinkOnDisk : GitLink
         return m_projectDirectoryPath;
     }
 
+    public bool IsInsideUnityProject() {
+       return  QuickGit.IsGitInsideProject(m_projectDirectoryPath);
+    }
+    public bool IsOutsideUnityProject() {
+        return !IsInsideUnityProject();
+    }
+
     public bool Exist()
     {
         return Directory.Exists(m_projectDirectoryPath) && Directory.Exists(m_projectDirectoryPath+"/.git");
@@ -543,6 +565,46 @@ public class GitLinkOnDisk : GitLink
             indexOf = 0;
         return m_gitLink.Substring(indexOf).Replace(".git", "")
             .Replace("/", "").Replace("\\", "");
+    }
+
+    public bool IsHosted()
+    {
+        return m_gitLink != null && m_gitLink.Length > 0;
+    }
+
+    public GitServer GetServerType()
+    {
+        return DownloadInfoFromGitServer.GetServerTypeOfPath(m_gitLink);
+    }
+
+    public bool HasUrl()
+    {
+        return IsHosted();
+    }
+
+    public string GetRelativeDirectoryPath()
+    {
+       string up= Directory.GetCurrentDirectory().Replace("\\","/");
+       string ap = m_projectDirectoryPath.Replace("\\", "/");
+        string result = ap.Replace(up, "");
+        if (result.Length>0 && 
+            (result[0] == '/' || result[0] == '\\') )
+            return result.Substring(1);
+        return result;
+    }
+
+    public string GetLastRevision()
+    {
+        bool found;
+        string value;
+        QuickGit.GetLastRevision(m_projectDirectoryPath, out found, out value);
+        return value;
+    }
+    public string GetLastRevision(out bool found)
+    {
+        string value;
+        QuickGit.GetLastRevision(m_projectDirectoryPath, out found, out value);
+        return value;
     }
 }
 

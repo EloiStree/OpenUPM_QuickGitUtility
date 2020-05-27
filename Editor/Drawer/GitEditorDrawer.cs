@@ -24,6 +24,7 @@ public class GitEditorDrawer
 
     public static void DisplayGitCommands(GitLinkOnDisk gitDirectory)
     {
+        bool hasUrl = gitDirectory.HasUrl();
 
         if (gitDirectory.Exist())
         {
@@ -36,22 +37,22 @@ public class GitEditorDrawer
             {
                 QuickGit.Commit(gitDirectory.GetDirectoryPath());
             }
-            if (GUILayout.Button("Pull"))
+            if (hasUrl && GUILayout.Button("Pull"))
             {
                 QuickGit.Pull(gitDirectory.GetDirectoryPath());
             }
-            if (GUILayout.Button("Push"))
+            if (hasUrl && GUILayout.Button("Push"))
             {
                 QuickGit.Push(gitDirectory.GetDirectoryPath());
             }
 
             GUILayout.EndHorizontal();
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Add>Commit>Pull"))
+            if (hasUrl && GUILayout.Button("Add>Commit>Pull"))
             {
                 QuickGit.AddCommitAndPush(gitDirectory.GetDirectoryPath());
             }
-            if (GUILayout.Button("A>C>Pull + A>C>push"))
+            if (hasUrl && GUILayout.Button("A>C>Pull + A>C>push"))
             {
                 QuickGit.PullPushWithAddAndCommit(gitDirectory.GetDirectoryPath());
             }
@@ -66,7 +67,7 @@ public class GitEditorDrawer
             {
                 QuickGit.OpenCmd(gitDirectory.GetDirectoryPath());
             }
-            if (GUILayout.Button("Go to Server"))
+            if (hasUrl && GUILayout.Button("Go to Server"))
             {
                 Application.OpenURL(gitDirectory.GetUrl());
             }

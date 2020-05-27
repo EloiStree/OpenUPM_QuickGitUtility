@@ -1,6 +1,8 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using System.IO;
 using UnityEditor;
+using UnityEngine;
 
 public class UnityPathSelectionInfo
 {
@@ -20,10 +22,6 @@ public class UnityPathSelectionInfo
     public string GetFullPath() { return m_absolutePath; }
     public string GetFolderPath() { return Path.GetDirectoryName(m_absolutePath); }
 
-    public static void Get(out object m_pathFound, out object m_selector)
-    {
-        throw new NotImplementedException();
-    }
 
     public void Set(string relativePath)
     {
@@ -55,5 +53,25 @@ public class UnityPathSelectionInfo
         if (getFolderOnly && IsFile())
            return  Path.GetDirectoryName(m_absolutePath);
         return m_absolutePath;
+    }
+
+    public string GetSelectName(bool getFolderOnly)
+    {
+        string path = GetAbsolutePath(getFolderOnly);
+        if(path==null || path.Length<0)
+        if (File.Exists(path))
+            return Path.GetFileName(path);
+        int slashindex = path.LastIndexOf("/");
+        if(slashindex<0)
+            slashindex = path.LastIndexOf("\\");
+        if (slashindex < 0)
+            slashindex = 0;
+         return path.Substring(slashindex+1);
+            
+    }
+
+    public void Open()
+    {
+        Application.OpenURL(m_absolutePath);
     }
 }

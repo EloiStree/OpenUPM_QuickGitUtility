@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class UnityPaths 
 {
 
 
-    private static string GoUpInPath(string currentPath)
+    public static string GoUpInPath(string currentPath)
     {
         int lastIndex = currentPath.LastIndexOf('/');
         if (lastIndex < 0)
@@ -28,7 +29,7 @@ public class UnityPaths
         return text;
     }
 
-    internal static string[] GetAllParents(string path, bool addGivenPath)
+    public static string[] GetAllParents(string path, bool addGivenPath)
     {
         List<string> result = new List<string>();
         if (addGivenPath)
@@ -62,7 +63,7 @@ public class UnityPaths
 
     }
 
-    internal static string[] Filter(string[] files, string[] notAuthorizedExtentsion)
+    public static string[] Filter(string[] files, string[] notAuthorizedExtentsion)
     {
         List<string> authorizedPath = new List<string>();
         for (int i = 0; i < files.Length; i++)
@@ -94,5 +95,46 @@ public class UnityPaths
         return path.Replace("/","\\");
     }
 
-    
+    public static Regex alphaNumSpaceRegex = new Regex("[^a-zA-Z0-9 ]");
+    public static Regex namespaceRegex = new Regex("[^a-zA-Z0-9.]");
+    public static Regex alphaNumRegex = new Regex("[^a-zA-Z0-9] ");
+    public static string AlphaNumeric(string text, bool allowSpace = false)
+    {
+        if (allowSpace)
+            return alphaNumSpaceRegex.Replace(text, "");
+        return alphaNumRegex.Replace(text, "");
+    }
+
+    public static string NamespaceTrim(string text)
+    {
+       return namespaceRegex.Replace(text, "");
+    }
+
+    public static string GetLastPartOfPath(string path)
+    {
+        int lastIndex = path.LastIndexOf('/');
+        if (lastIndex < 0)
+            lastIndex = path.LastIndexOf('\\');
+        if (lastIndex < 0)
+            return path;
+        return path.Substring(lastIndex+1 );
+    }
+
+    public static string GetRelativePathInAssets(string containedPath)
+    {
+        return GetRelativePath(GetUnityAssetsPath(), containedPath);
+    }
+    public static string GetRelativePathInProjectRoot(string containedPath)
+    {
+        return GetRelativePath(GetUnityRootPath(), containedPath);
+    }
+    public static string GetRelativePath(string containerPath, string containedPath) {
+        string rp = ReplaceBySlash(containedPath).Replace(ReplaceBySlash(containerPath), "");
+        if (rp.Length > 0 && (rp[0] == '/' || rp[0] == '\\'))
+            rp = rp.Substring(1);
+
+        return rp;
+    }
+
+
 }
