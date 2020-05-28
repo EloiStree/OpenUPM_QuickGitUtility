@@ -29,8 +29,8 @@ public class GitInProjectWindow : EditorWindow
             m_displayprojectsInfoParent = new bool[maxSizeOfTableDirtyCode];
             for (int i = 0; i < maxSizeOfTableDirtyCode; i++)
             {
-                m_displayInfoInGitsInProject[i]  = true;
-                m_displayprojectsInfoInProject[i]= true;
+                m_displayInfoInGitsInProject[i]  = false;
+                m_displayprojectsInfoInProject[i]= false;
                 m_displayInfoInGitsParent[i]     = true;
                 m_displayprojectsInfoParent[i]   = true;
 
