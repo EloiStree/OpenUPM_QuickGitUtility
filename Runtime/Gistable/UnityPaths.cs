@@ -96,8 +96,8 @@ public class UnityPaths
     }
 
     public static Regex alphaNumSpaceRegex = new Regex("[^a-zA-Z0-9 ]");
-    public static Regex namespaceRegex = new Regex("[^a-zA-Z0-9.]");
-    public static Regex alphaNumRegex = new Regex("[^a-zA-Z0-9] ");
+    public static Regex namespaceRegex = new Regex("[^a-zA-Z0-9\\.]");
+    public static Regex alphaNumRegex = new Regex("[^a-zA-Z0-9]");
     public static string AlphaNumeric(string text, bool allowSpace = false)
     {
         if (allowSpace)
@@ -135,6 +135,5 @@ public class UnityPaths
 
         return rp;
     }
-
 
 }

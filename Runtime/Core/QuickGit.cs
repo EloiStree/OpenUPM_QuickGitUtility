@@ -408,8 +408,10 @@ public static class QuickGit
     }
     public static void PushLocalToGitLab(string directoryPath, string userName, string newRepoName, out string gitCreatedUrl)
     {
-
-
+        QuickGit.CreateGitKeepInEmptyFolders(directoryPath);
+        directoryPath= UnityPaths.ReplaceByBackslash(directoryPath);
+        UnityEngine.Debug.Log("" + userName + "????" + newRepoName);
+        UnityEngine.Debug.Log("" + "????" + directoryPath);
         if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(newRepoName))
             gitCreatedUrl = "https://gitlab.com/" + userName + "/" + newRepoName + ".git";
         else
@@ -421,7 +423,7 @@ public static class QuickGit
         WindowCMD.RunCommands(new string[] {
                 "git add .",
                 "git commit -m \"Local to Remote\"",
-                "git push --set-upstream https://gitlab.com/"+userName+"/"+newRepoName+".git master",
+                "git push --set-upstream \"https://gitlab.com/"+userName+"/"+newRepoName+".git\" master",
                 "git push -u origin master"
           }, directoryPath);
 
