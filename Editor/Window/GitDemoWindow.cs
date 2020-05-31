@@ -17,9 +17,9 @@ public class GitDemoWindow : EditorWindow
 
         public string[] m_gitLinksPath= new string[0];
         public List<GitLinkOnDisk> m_gitLinks = new List<GitLinkOnDisk>();
-        internal bool m_displayAllFolder;
-        internal bool m_displayAllGitInFolder=true;
-        internal string m_projectGitInParent;
+        public bool m_displayAllFolder;
+        public bool m_displayAllGitInFolder=true;
+        public string m_projectGitInParent;
 
         public bool[] m_displayInfoInGits = new bool[100];
         public bool[] m_displayprojectsInfo = new bool[100];

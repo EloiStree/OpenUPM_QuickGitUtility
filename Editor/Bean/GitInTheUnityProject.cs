@@ -22,7 +22,7 @@ public class GitInTheUnityProject
     public List<GitLinkOnDisk> GetParents(bool refresh=false) { return m_inParentsPath; }
     public List<GitLinkOnDisk> GetGitInProject(bool refresh = false) { return m_inTheProject; }
 
-    internal void AutoSaveLocal(string commitMessage="")
+    public void AutoSaveLocal(string commitMessage="")
     {
         for (int i = 0; i < m_inTheProject.Count; i++)
         {
@@ -32,7 +32,7 @@ public class GitInTheUnityProject
         }
     }
 
-    internal void AutoSaveAndPush(string commitMessage = "")
+    public void AutoSaveAndPush(string commitMessage = "")
     {
         for (int i = 0; i < m_inTheProject.Count; i++)
         {

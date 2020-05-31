@@ -80,7 +80,7 @@ public class GitEditorDrawer
 
     }
 
-    internal static void DisplayGitLink(GitLinkOnDisk git)
+    public static void DisplayGitLink(GitLinkOnDisk git)
     {
         GUIStyle button = new GUIStyle(GUI.skin.button);
         GUILayout.BeginHorizontal();

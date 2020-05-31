@@ -19,7 +19,7 @@ public class GitInProjectWindow : EditorWindow
         public bool[] m_displayprojectsInfoParent    = new bool[10];
         public bool m_inProject=true;
         public bool m_inParent=true;
-        internal Vector2 m_scollrPackagePosition = new Vector2();
+        public Vector2 m_scollrPackagePosition = new Vector2();
 
         public Info(int maxSizeOfTableDirtyCode) {
             m_tableCapacity = maxSizeOfTableDirtyCode;
