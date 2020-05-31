@@ -1,5 +1,5 @@
 {
-    "name": "be.eloiexperiments.quickgitutilityeditor",
+    "name": "be.eloistree.quickgitutilityeditor",
     "references": [
         "be.eloistree.quickgitutility"
     ],
