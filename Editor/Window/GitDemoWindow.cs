@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class GitDemoWindow : EditorWindow
 {
-    public static string m_infoSave;
+    public static string m_infoSave="";
     public Info m_info = new Info();
     public GitInTheUnityProject m_gitInProject = new GitInTheUnityProject();
     [SerializeField]
@@ -19,7 +19,7 @@ public class GitDemoWindow : EditorWindow
         public List<GitLinkOnDisk> m_gitLinks = new List<GitLinkOnDisk>();
         public bool m_displayAllFolder;
         public bool m_displayAllGitInFolder=true;
-        public string m_projectGitInParent;
+        public string m_projectGitInParent="";
 
         public bool[] m_displayInfoInGits = new bool[100];
         public bool[] m_displayprojectsInfo = new bool[100];

@@ -73,6 +73,8 @@ public class GitInProjectWindow : EditorWindow
     public int space=10;
     void OnGUI()
     {
+        if (m_info == null)
+            m_info = new Info(50);
 
         m_info.m_scollrPackagePosition = GUILayout.BeginScrollView(m_info.m_scollrPackagePosition);
         if (m_info == null)
