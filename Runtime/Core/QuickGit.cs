@@ -504,24 +504,30 @@ public static class QuickGit
 
     }
 
-    public static void LoadCommitsFromDateToDate(string [] repositoriesAbsolutePath, GitDateFormat dateFromFormat, GitDateFormat dateToFormat, out List<LogCommitReceived> commits, int maxToRecover = 50000)
+    public static void LoadCommitsFromDateToDate(string [] repositoriesAbsolutePath, GitDateFormat dateFromFormat, GitDateFormat dateToFormat, out List<LogCommitReceived> commits, out List<WindowCMDCallback> callbacks, int maxToRecover = 50000)
     {
+        callbacks= new List<WindowCMDCallback>();
+
         List<LogCommitReceived> receivedCommits = new List<LogCommitReceived>();
         commits = new List<LogCommitReceived>();
         for (int i = 0; i< repositoriesAbsolutePath.Length; i++)
         {
-            QuickGit.LoadCommitsFromDateToDate(repositoriesAbsolutePath[i], dateFromFormat, dateToFormat, out receivedCommits, maxToRecover);
+            WindowCMDCallback callback;
+            QuickGit.LoadCommitsFromDateToDate(repositoriesAbsolutePath[i], dateFromFormat, dateToFormat, out receivedCommits, out callback, maxToRecover);
+            callbacks.Add(callback);
             commits.AddRange(receivedCommits);
         }
     }
-    public static void LoadCommitsFromDateToDate(string repositoryAbsolutePath, GitDateFormat dateFromFormat, GitDateFormat dateToFormat, out List<LogCommitReceived> commits, int maxToRecover=50000)
+    public static void LoadCommitsFromDateToDate(string repositoryAbsolutePath, GitDateFormat dateFromFormat, GitDateFormat dateToFormat, out List<LogCommitReceived> commits, out WindowCMDCallback callback, int maxToRecover=50000)
     {
         commits = new List<LogCommitReceived>();
-        WindowCMDCallback callback;
-        string cmd = string.Format("git log --after=\"{0}\" --before=\"{1}\" --pretty=format:\"%H|%an|%ae|%ad\" --date=format:%Y:%m:%d:%H:%M:%S:%z -n {2}",
-            dateFromFormat, dateToFormat, maxToRecover);
+        
+        string cmd = string.Format("git log --after=\"{0}\" --before=\"{1}\" --pretty=format:\"%H|%an|%ae|%ad|%s\" --date=format:%Y:%m:%d:%H:%M:%S:%z -n {2}",
+            dateFromFormat.GetGitTimeFormat(), dateToFormat.GetGitTimeFormat(), maxToRecover);
         WindowCMD.RunCommands(new string[] { cmd }, repositoryAbsolutePath, false, out callback);
         string[] receivedLines = callback.GetReceivedTextAsLines();
+        Debug.Log("Received Lines:" + receivedLines.Length);
+        Debug.Log("Cmd:" + cmd);
         for (int i = 0; i < receivedLines.Length; i++)
         {
             //3a8c1a82146c13cb9e26359aaa73d49b9c81ca84|ddd|ddd@gmail.com|2020:06:19:09:53:30:+0200|Commit
