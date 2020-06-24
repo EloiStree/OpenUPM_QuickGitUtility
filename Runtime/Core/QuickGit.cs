@@ -10,13 +10,13 @@ public static class QuickGit
     public static void RemoveAllEmptyFolders(string wherePath)
     {
         RemoveGitKeepInFolders(wherePath);
-        string [] paths = GetAllFolders(wherePath, true);
+        string[] paths = GetAllFolders(wherePath, true);
         foreach (var path in paths)
         {
             if (Directory.Exists(path)) {
                 string[] files = Directory.GetFiles(path);
-                if (files.Length == 0) { 
-                    Directory.Delete(path,true);
+                if (files.Length == 0) {
+                    Directory.Delete(path, true);
                     if (File.Exists(path + ".meta"))
                         File.Delete(path + ".meta");
                 }
@@ -112,7 +112,7 @@ public static class QuickGit
     {
         found = GetGitsInGivenDirectories(GetAllFolders(directoryPath, withChildrensFolders, withChildrensFolders));
     }
-    public static void GetGitsInDirectory(string directoryPath, out List<GitLinkOnDisk> found,bool useRootFolder , bool withChildrensFolders = true)
+    public static void GetGitsInDirectory(string directoryPath, out List<GitLinkOnDisk> found, bool useRootFolder, bool withChildrensFolders = true)
     {
         found = GetGitsInGivenDirectories(GetAllFolders(directoryPath, useRootFolder, withChildrensFolders));
     }
@@ -120,9 +120,9 @@ public static class QuickGit
 
     public static void GetGitsFromLeaf(List<GitLinkOnDisk> givenGits, out GitLinkOnDisk gitOnTopOfPath)
     {
-        if (givenGits.Count <=0) gitOnTopOfPath = null;
+        if (givenGits.Count <= 0) gitOnTopOfPath = null;
         else
-        gitOnTopOfPath = givenGits.OrderByDescending(k => k.GetDirectoryPath().Length).First();
+            gitOnTopOfPath = givenGits.OrderByDescending(k => k.GetDirectoryPath().Length).First();
     }
     public static void GetGitsOnFromRoot(List<GitLinkOnDisk> givenGits, out GitLinkOnDisk gitOnTopOfPath)
     {
@@ -130,13 +130,13 @@ public static class QuickGit
         else
             gitOnTopOfPath = givenGits.OrderBy(k => k.GetDirectoryPath().Length).First();
     }
-    public enum PathReadDirection { RootToLeaf, LeafToRoot}
+    public enum PathReadDirection { RootToLeaf, LeafToRoot }
     public static void GetGitInParents(string path, PathReadDirection readMode, out GitLinkOnDisk git) {
         List<GitLinkOnDisk> links;
         GetGitsInParents(path, out links);
         if (readMode == PathReadDirection.RootToLeaf)
             GetGitsOnFromRoot(links, out git);
-        else 
+        else
             GetGitsFromLeaf(links, out git);
     }
     public static void GetGitsInParents(string path, out List<GitLinkOnDisk> links)
@@ -171,12 +171,12 @@ public static class QuickGit
     public static bool IsPathInProjectFolder(string currentPath)
     {
         currentPath = currentPath.Replace("\\", "/");
-        string path = Directory.GetCurrentDirectory().Replace("\\", "/") ;
+        string path = Directory.GetCurrentDirectory().Replace("\\", "/");
         return currentPath.IndexOf(path) > -1;
 
     }
 
-   
+
 
     public static bool IsPathOutsideOfProjectFolder(string currentPath)
     {
@@ -190,7 +190,7 @@ public static class QuickGit
     public static List<GitLinkOnDisk> GetGitsInGivenDirectories(string[] directoriesPath)
     {
         List<GitLinkOnDisk> packages = new List<GitLinkOnDisk>();
-        for (int i = directoriesPath.Length-1; i >= 0; i--)
+        for (int i = directoriesPath.Length - 1; i >= 0; i--)
         {
 
             string p = directoriesPath[i];
@@ -207,7 +207,7 @@ public static class QuickGit
     }
 
     public static bool IsPathIsGitRootFormat(string directoryPath)
-    {if (directoryPath.Length < 6) return false;
+    { if (directoryPath.Length < 6) return false;
 
         return directoryPath.ToLower().IndexOf("/.git") == directoryPath.Length - 5
                 ||
@@ -219,7 +219,7 @@ public static class QuickGit
         if (!IsPathHasGitRootFolder(directoryPath))
             return false;
         string url = "";
-        GetGitUrl(directoryPath,out url);
+        GetGitUrl(directoryPath, out url);
         return string.IsNullOrWhiteSpace(url);
     }
 
@@ -230,31 +230,31 @@ public static class QuickGit
         return Directory.GetFiles(whereGitIs).Length <= 0;
     }
 
-   
+
 
     private static void FindRemoveFilesIn(ref List<string> folders, string toFound)
     {
-        for (int i = folders.Count - 1; i >=0; i--)
+        for (int i = folders.Count - 1; i >= 0; i--)
         {
             if (folders[i].IndexOf(toFound) > -1)
                 folders.RemoveAt(i);
         }
     }
 
-   
-  
 
-    public static string [] GetAllFolders(string folderPath, bool containGivenFolder, bool withChildren=true) {
-        if (string.IsNullOrEmpty(folderPath.Trim())) 
+
+
+    public static string[] GetAllFolders(string folderPath, bool containGivenFolder, bool withChildren = true) {
+        if (string.IsNullOrEmpty(folderPath.Trim()))
             return new string[0];
 
-        List<string> pathList = Directory.GetDirectories(folderPath, "*", withChildren? SearchOption.AllDirectories: SearchOption.TopDirectoryOnly).ToList();
+        List<string> pathList = Directory.GetDirectories(folderPath, "*", withChildren ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly).ToList();
         if (containGivenFolder)
             pathList.Add(folderPath);
         return pathList.ToArray();
     }
 
-    
+
 
     public static void OpenCmd(string gitDirectoryPath)
     {
@@ -313,7 +313,7 @@ public static class QuickGit
           }, gitDirectoryPath);
     }
     public static bool m_debugState = false;
-    public static void  SetDebugOn(bool useDebug)
+    public static void SetDebugOn(bool useDebug)
     {
         m_debugState = useDebug;
     }
@@ -385,28 +385,28 @@ public static class QuickGit
     public static void PushLocalToGitHub(string directoryPath, string userName, string newRepoName, out string gitCreatedUrl)
     {
         UnityEngine.Debug.LogWarning("Push on GitHub is not implemented because of it security complexity");
-        gitCreatedUrl = "https://github.com/new?name="+newRepoName;
+        gitCreatedUrl = "https://github.com/new?name=" + newRepoName;
 
-   //     gitCreatedUrl = "https://github.com/"+userName+"/"+newRepoName+".git";
+        //     gitCreatedUrl = "https://github.com/"+userName+"/"+newRepoName+".git";
         //  if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(newRepoName))
-    //        gitCreatedUrl = "https://github.com/" + userName + "/" + newRepoName + ".git";
-    //    else
-    //        gitCreatedUrl = "";
-    //    //https://kbroman.org/github_tutorial/pages/init.html
-    //    RunCommands(new string[] {
-    //                "git add .",
-    //                "git commit -m \"Local to Remote\"",
+        //        gitCreatedUrl = "https://github.com/" + userName + "/" + newRepoName + ".git";
+        //    else
+        //        gitCreatedUrl = "";
+        //    //https://kbroman.org/github_tutorial/pages/init.html
+        //    RunCommands(new string[] {
+        //                "git add .",
+        //                "git commit -m \"Local to Remote\"",
 
-    ////                "git remote add origin git@github.com:"+userName+"/"+newRepoName+".git",
-    //                "git remote add origin https://github.com/"+userName+"/"+newRepoName+"",
-    //                "git push --set-upstream https://github.com/"+userName+"/"+newRepoName+".git master",
-    //                "git push -u origin master"
-    //          }, directoryPath);
+        ////                "git remote add origin git@github.com:"+userName+"/"+newRepoName+".git",
+        //                "git remote add origin https://github.com/"+userName+"/"+newRepoName+"",
+        //                "git push --set-upstream https://github.com/"+userName+"/"+newRepoName+".git master",
+        //                "git push -u origin master"
+        //          }, directoryPath);
     }
     public static void PushLocalToGitLab(string directoryPath, string userName, string newRepoName, out string gitCreatedUrl)
     {
         QuickGit.CreateGitKeepInEmptyFolders(directoryPath);
-        directoryPath= UnityPaths.ReplaceByBackslash(directoryPath);
+        directoryPath = UnityPaths.ReplaceByBackslash(directoryPath);
         UnityEngine.Debug.Log("" + userName + "????" + newRepoName);
         UnityEngine.Debug.Log("" + "????" + directoryPath);
         if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(newRepoName))
@@ -434,7 +434,7 @@ public static class QuickGit
                 "rmdir "+directoryPath
           }, directoryPath);
     }
-    public static void RemoveFiles( string directoryPath)
+    public static void RemoveFiles(string directoryPath)
     {
         string[] pathfiles = Directory.GetFiles(directoryPath, "*", SearchOption.AllDirectories);
         string[] pathfilesOwn = Directory.GetFiles(directoryPath, "*", SearchOption.AllDirectories);
@@ -453,7 +453,7 @@ public static class QuickGit
         files.AddRange(pathfilesOwn);
         WindowCMD.RunCommands(files.ToArray(), directoryPath);
     }
-   
+
     public static bool GetGitUrl(string rootDirectoryPath, out string url)
     {
         url = "";
@@ -494,16 +494,149 @@ public static class QuickGit
     }
     public enum GitServer { GitHub, GitLab }
 
-    public static void GetLastRevision(string absolutePathOfRepository,out  bool found, out  string revisionId)
+    public static void GetLastRevision(string absolutePathOfRepository, out bool found, out string revisionId)
     {
-        string path = absolutePathOfRepository+ "/.git/refs/heads/master";
+        string path = absolutePathOfRepository + "/.git/refs/heads/master";
         revisionId = "";
         found = File.Exists(path);
         if (found)
             revisionId = File.ReadAllText(path).Trim();
-            
+
+    }
+
+    public static void LoadCommitsFromDateToDate(string [] repositoriesAbsolutePath, GitDateFormat dateFromFormat, GitDateFormat dateToFormat, out List<LogCommitReceived> commits, int maxToRecover = 50000)
+    {
+        List<LogCommitReceived> receivedCommits = new List<LogCommitReceived>();
+        commits = new List<LogCommitReceived>();
+        for (int i = 0; i< repositoriesAbsolutePath.Length; i++)
+        {
+            QuickGit.LoadCommitsFromDateToDate(repositoriesAbsolutePath[i], dateFromFormat, dateToFormat, out receivedCommits, maxToRecover);
+            commits.AddRange(receivedCommits);
+        }
+    }
+    public static void LoadCommitsFromDateToDate(string repositoryAbsolutePath, GitDateFormat dateFromFormat, GitDateFormat dateToFormat, out List<LogCommitReceived> commits, int maxToRecover=50000)
+    {
+        commits = new List<LogCommitReceived>();
+        WindowCMDCallback callback;
+        string cmd = string.Format("git log --after=\"{0}\" --before=\"{1}\" --pretty=format:\"%H|%an|%ae|%ad\" --date=format:%Y:%m:%d:%H:%M:%S:%z -n {2}",
+            dateFromFormat, dateToFormat, maxToRecover);
+        WindowCMD.RunCommands(new string[] { cmd }, repositoryAbsolutePath, false, out callback);
+        string[] receivedLines = callback.GetReceivedTextAsLines();
+        for (int i = 0; i < receivedLines.Length; i++)
+        {
+            //3a8c1a82146c13cb9e26359aaa73d49b9c81ca84|ddd|ddd@gmail.com|2020:06:19:09:53:30:+0200|Commit
+            //50d63eb71ce042349f45ba4a3bd80da925bac915|Eloi Stree|eloistree@gmail.com|2020:06:19:07:36:50:+0200|Commit
+            string[] lineTokens = receivedLines[i].Split('|');
+            if (lineTokens.Length == 5)
+            {
+                LogCommitReceived commit;
+                ConvertTableToCommitFromStringOfConsole(lineTokens, out commit);
+                commits.Add(commit);
+            }
+        }
+    }
+
+    public static void ConvertTableToCommitFromStringOfConsole(string[] m_prettyTokens, out LogCommitReceived commit)
+    {
+
+        commit = new LogCommitReceived();
+        commit.SetCommitId(m_prettyTokens[0].Trim());
+        commit.SetAuthor(m_prettyTokens[1].Trim());
+        commit.SetMail(m_prettyTokens[2].Trim());
+        string toParse = m_prettyTokens[3].Trim();
+        commit.SetLabel(m_prettyTokens[4].Trim());
+
+        string[] dateToken = toParse.Split(':');
+        int year = int.Parse(dateToken[0]);
+        int month = int.Parse(dateToken[1]);
+        int day = int.Parse(dateToken[2]);
+        int hour = int.Parse(dateToken[3]);
+        int minute = int.Parse(dateToken[4]);
+        int second = int.Parse(dateToken[5]);
+        int millisecond = int.Parse(dateToken[6].Replace("+", ""));
+        commit.SetDate(year, month, day, hour, minute, second, millisecond);
     }
 }
+[System.Serializable]
+public class GitDateFormat
+{
+    public int year = 2020;
+    public int month = 01;
+    public int day = 01;
+    public int hour = 12;
+    public int minute = 00;
+    public int second = 00;
+    public string GetGitTimeFormat()
+    {
+        return string.Format("{0:0000}-{1:00}-{2:00} {3:00}:{4:00}:{5:00}", year, month, day, hour, minute, second);
+    }
+    public DateTime GetAsDateTime()
+    {
+        return new DateTime(year, month, day, hour, minute, second);
+    }
+}
+[System.Serializable]
+public class LogCommitReceived
+{
+    public string m_commitId;
+    public string m_author;
+    public string m_userMail;
+    public string m_label;
+    public int m_year;
+    public int m_month;
+    public int m_day;
+    public int m_hour;
+    public int m_minute;
+    public int m_second;
+    public int m_millisecond;
+
+    public void SetLabel(string text)
+    {
+        m_label = text;
+    }
+
+    public void SetCommitId(string id)
+    {
+        m_commitId = id;
+
+    }
+    public void SetAuthor(string name)
+    {
+        m_author = name;
+    }
+    public void SetMail(string mail)
+    {
+        m_userMail = mail;
+    }
+    public DateTime GetDate()
+    {
+        return new DateTime(m_year, m_month, m_day, m_hour, m_minute, m_second, m_millisecond);
+    }
+
+
+    public string GetAsOnliner()
+    {
+        return string.Format("{0}({1}): {2} -> {3}",
+            m_author, m_userMail,
+            GetDate().ToString("yyyy-MM-dd HH:mm"),
+            m_commitId);
+    }
+
+    public void SetDate(int year, int month, int day, int hour, int minute, int second, int millisecond)
+    {
+        m_year = year;
+        m_month = month;
+        m_day = day;
+        m_hour = hour;
+        m_minute = minute;
+        m_second = second;
+        m_millisecond = millisecond;
+    }
+
+
+}
+
+
 [System.Serializable]
 public class GitLink
 {
