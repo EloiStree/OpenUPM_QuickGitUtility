@@ -29,10 +29,10 @@ public class DownloadInfoFromGitServer
         if (tokens.Length <2)
             return;
         string user= tokens[0], project = tokens[1];
-       // Debug.Log("keys:" + server + " "+ user + " " + project + " " +branchName);
+        Debug.Log("keys:" + server + " "+ user + " " + project + " " +branchName);
         LoadNamespaceFromUrl(server, user, project, branchName, out found, out namespaceID);
 
-       // Debug.Log("NP:" + namespaceID);
+        Debug.Log("NP:" + namespaceID);
 
         //https://gitlab.com/eloistree/2020_05_25_KoFiCount.git
         //https://github.com/EloiStree/2019_07_21_QuickGitUtility
@@ -50,6 +50,7 @@ public class DownloadInfoFromGitServer
             url = string.Format("https://raw.githubusercontent.com/{0}/{1}/{2}/package.json"
                 , userName, projectName, projectBranch);
         }
+        Debug.Log("Url to to search:" + url);
         LoadNamespaceFromUrl(url, out found, out namespaceID);
     } 
 
