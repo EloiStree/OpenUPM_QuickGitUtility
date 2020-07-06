@@ -29,10 +29,10 @@ public class DownloadInfoFromGitServer
         if (tokens.Length <2)
             return;
         string user= tokens[0], project = tokens[1];
-        Debug.Log("keys:" + server + " "+ user + " " + project + " " +branchName);
+       // Debug.Log("keys:" + server + " "+ user + " " + project + " " +branchName);
         LoadNamespaceFromUrl(server, user, project, branchName, out found, out namespaceID);
 
-        Debug.Log("NP:" + namespaceID);
+//        Debug.Log("NP:" + namespaceID);
 
         //https://gitlab.com/eloistree/2020_05_25_KoFiCount.git
         //https://github.com/EloiStree/2019_07_21_QuickGitUtility
@@ -50,14 +50,22 @@ public class DownloadInfoFromGitServer
             url = string.Format("https://raw.githubusercontent.com/{0}/{1}/{2}/package.json"
                 , userName, projectName, projectBranch);
         }
-        Debug.Log("Url to to search:" + url);
+       // Debug.Log("Url to to search:" + url);
         LoadNamespaceFromUrl(url, out found, out namespaceID);
     } 
 
     public static void LoadNamespaceFromUrl(string url, out bool found, out string namespaceID) {
-   
-        string page = DownloadPage2(url).ToLower();
-        LoadNamespaceFromText(page, out found, out namespaceID);
+
+        bool succedToLoad;
+        string page = DownloadPage2(url, out succedToLoad).ToLower();
+        if (succedToLoad)
+        { 
+            LoadNamespaceFromText(page, out found, out namespaceID);
+        }
+        else {
+            found = false;
+            namespaceID = "";
+        }
     }
 
     public static void LoadNamespaceFromText(string text, out bool found, out string namespaceID)
@@ -92,28 +100,47 @@ public class DownloadInfoFromGitServer
         }
     }
 
-    public static string DownloadPage2(string url)
+    public static string DownloadPage2(string url, out bool succedToLoad)
     {
-        string data = "";
-        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-
-        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-        if (response.StatusCode == HttpStatusCode.OK)
+        string result = "";
+        succedToLoad = false;
+        HttpWebRequest request=null;
+        HttpWebResponse response=null;
+        Stream receiveStream = null; 
+        StreamReader readStream = null;
+        try
         {
-            Stream receiveStream = response.GetResponseStream();
-            StreamReader readStream = null;
+            string data = "";
+            request = (HttpWebRequest)WebRequest.Create(url);
 
-            if (response.CharacterSet == null)
-                readStream = new StreamReader(receiveStream);
-            else
-                readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+            response = (HttpWebResponse)request.GetResponse();
 
-            data = readStream.ReadToEnd();
-            response.Close();
-            readStream.Close();
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                 receiveStream = response.GetResponseStream();
+                 readStream = null;
+
+                if (response.CharacterSet == null)
+                    readStream = new StreamReader(receiveStream);
+                else
+                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+
+                data = readStream.ReadToEnd();
+                succedToLoad = true;
+            }
+            result= data;
         }
-        return data;
+        catch (Exception e)
+        {
+            succedToLoad = false;
+        }
+        finally {
+            if(response!=null)
+                response.Close();
+            if (readStream != null)
+                readStream.Close();
+        }
+        return result;
     }
 
     public  static GitServer GetServerTypeOfPath(string url)
