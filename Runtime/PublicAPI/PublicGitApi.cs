@@ -73,6 +73,26 @@ public class PublicGitLab
     }
 }
 
+public  class OnlineGitProject {
+
+    public string m_name;
+    public string m_description;
+    public string m_defaultBranch;
+    public string m_cloneLink;
+    public DateTime m_createdDate;
+    public DateTime m_updateDate;
+
+
+    public  string GetName() { return m_name; }
+    public  string GetDescription() { return m_description; }
+    public  string GetDefaultBranchName() { return m_defaultBranch; }
+    public  string GetCloneLink() { return m_cloneLink; }
+    public  DateTime GetCreatedDate() { return m_createdDate; }
+    public  DateTime GetUpdatedDate() { return m_updateDate; }
+
+}
+
+
 [System.Serializable]
 public class JsonListGitHubProjects
 {
