@@ -11,5 +11,6 @@
         "Git",
         "Utility"
     ],
+  "dependencies":{ "be.eloistree.license":"0.0.1"}, 
     "category": "Script"
 }
