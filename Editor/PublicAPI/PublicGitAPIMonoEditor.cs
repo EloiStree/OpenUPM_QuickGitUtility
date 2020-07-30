@@ -19,7 +19,7 @@ public class PublicGitAPIMonoEditor : EditorWindow
         public Vector2 m_scrollInfo= new Vector2();
     }
 
-    [MenuItem("Window / Git Utility/ Git Public Lab&Hub List")]
+    [MenuItem("ꬲ🧰/ Git Utility/ Git Public Lab&Hub List")]
     static void Init()
     {
         PublicGitAPIMonoEditor window = (PublicGitAPIMonoEditor)EditorWindow.GetWindow(typeof(PublicGitAPIMonoEditor));

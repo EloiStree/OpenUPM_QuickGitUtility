@@ -43,7 +43,7 @@ public class GitInProjectWindow : EditorWindow
     
 
 
-    [MenuItem("Window / Git Utility / View All")]
+    [MenuItem("ꬲ🧰/ Git Utility / View All")]
     static void Init()
     {
         GitInProjectWindow window = (GitInProjectWindow)EditorWindow.GetWindow(typeof(GitInProjectWindow));

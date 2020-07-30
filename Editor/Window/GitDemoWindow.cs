@@ -28,7 +28,7 @@ public class GitDemoWindow : EditorWindow
     
 
 
-    [MenuItem("Window / Git Utility/ Prototype / Selection")]
+    [MenuItem("ꬲ🧰/ Git Utility/ Prototype / Selection")]
     static void Init()
     {
         GitDemoWindow window = (GitDemoWindow)EditorWindow.GetWindow(typeof(GitDemoWindow));
