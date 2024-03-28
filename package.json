@@ -11,6 +11,10 @@
         "Git",
         "Utility"
     ],
+    "author" : {
+  "name":"Eloi Stree",
+  "mail":"",
+  "url":""},    
   "dependencies":{ "be.eloistree.license":"0.0.1"}, 
     "category": "Script"
 }
