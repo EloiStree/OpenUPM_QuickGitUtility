@@ -318,11 +318,24 @@ public static class QuickGit
         m_debugState = useDebug;
     }
     public static bool GetDebugState() { return m_debugState; }
+
+    public static void AddFolderInSafeDirectory(string gitDirectoryPath) {
+       
+        WindowCMD.RunCommands(new string[] {
+                "git config --global --add safe.directory \""+gitDirectoryPath+"\"",
+          }, gitDirectoryPath);
+
+    }
+    public static string GetAddSaveCommandAsString(string gitDirectoryPath) {
+        return "git config --global --add safe.directory \"" + gitDirectoryPath + "\"";
+    }
+
     public static void AddCommitPull(string gitDirectoryPath, string commitDescription = "")
     {
         if (string.IsNullOrWhiteSpace(commitDescription))
             commitDescription = GetTime();
         WindowCMD.RunCommands(new string[] {
+                GetAddSaveCommandAsString(gitDirectoryPath),
                 "git add -A",
                 "git commit -m \"Save: " + commitDescription + "\"",
                 "git pull"
@@ -333,6 +346,7 @@ public static class QuickGit
         if (string.IsNullOrWhiteSpace(commitDescription))
             commitDescription = GetTime();
         WindowCMD.RunCommands(new string[] {
+                GetAddSaveCommandAsString(gitDirectoryPath),
                 "git add -A",
                 "git commit -m \"Save: " + commitDescription + "\"",
                 "git pull",
@@ -346,6 +360,7 @@ public static class QuickGit
         if (string.IsNullOrWhiteSpace(commitDescription))
             commitDescription = GetTime();
         WindowCMD.RunCommands(new string[] {
+                GetAddSaveCommandAsString(gitDirectoryPath),
                 "git add -A",
                 "git commit -m \"" + commitDescription + "\"",
                 "git push"
@@ -357,6 +372,7 @@ public static class QuickGit
     {
         Directory.CreateDirectory(directoryPath);
         WindowCMD.RunCommands(new string[] {
+                GetAddSaveCommandAsString(directoryPath),
                 "git init .",
                 "git add .",
                 "git commit -m \"First commit\"",
@@ -418,6 +434,7 @@ public static class QuickGit
         //git push --set-upstream https://gitlab.example.com/namespace/nonexistent-project.git master
         //git push --set-upstream address/your-project.git
         WindowCMD.RunCommands(new string[] {
+                GetAddSaveCommandAsString(directoryPath),
                 "git add .",
                 "git commit -m \"Local to Remote\"",
                 "git push --set-upstream \"https://gitlab.com/"+userName+"/"+newRepoName+".git\" master",
