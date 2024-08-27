@@ -275,9 +275,12 @@ public static class QuickGit
     }
     public static void Clone(string gitUrl, string gitDirectoryPath)
     {
+        string cmd = "git clone \"" + gitUrl + "\" \"" + gitDirectoryPath + "\"";
         WindowCMD.RunCommands(new string[] {
-                "git clone "+ gitUrl+ " "+ gitDirectoryPath
-          }, gitDirectoryPath);
+                 cmd
+          }, gitDirectoryPath,true,out WindowCMDCallback callback);
+        Debug.Log(cmd);
+        Debug.Log(JsonUtility.ToJson(callback));
     }
 
     public static void Pull(string gitDirectoryPath)

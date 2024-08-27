@@ -1,11 +1,8 @@
 {
-    "name": "be.eloistree.quickgitutilityeditor",
-    "references": [
-        "be.eloistree.quickgitutility"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "name": "be.elab.quickgitutility",
+    "rootNamespace": "",
+    "references": [],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
