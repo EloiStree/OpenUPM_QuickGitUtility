@@ -286,12 +286,14 @@ public static class QuickGit
     public static void Pull(string gitDirectoryPath)
     {
         WindowCMD.RunCommands(new string[] {
+                GetAddSaveCommandAsString(gitDirectoryPath),
                 "git pull"
           }, gitDirectoryPath);
     }
     public static void Add(string gitDirectoryPath)
     {
         WindowCMD.RunCommands(new string[] {
+                GetAddSaveCommandAsString(gitDirectoryPath),
                 "git add -A"
           }, gitDirectoryPath);
     }
@@ -300,6 +302,7 @@ public static class QuickGit
         if (string.IsNullOrWhiteSpace(commitDescription))
             commitDescription = GetTime();
         WindowCMD.RunCommands(new string[] {
+                GetAddSaveCommandAsString(gitDirectoryPath),
                 "git commit -m \"Save: " + commitDescription + "\""
           }, gitDirectoryPath);
     }
@@ -312,6 +315,7 @@ public static class QuickGit
     public static void Push(string gitDirectoryPath)
     {
         WindowCMD.RunCommands(new string[] {
+                GetAddSaveCommandAsString(gitDirectoryPath),
                 "git push"
           }, gitDirectoryPath);
     }
@@ -325,7 +329,7 @@ public static class QuickGit
     public static void AddFolderInSafeDirectory(string gitDirectoryPath) {
        
         WindowCMD.RunCommands(new string[] {
-                "git config --global --add safe.directory \""+gitDirectoryPath+"\"",
+                GetAddSaveCommandAsString(gitDirectoryPath),
           }, gitDirectoryPath);
 
     }
@@ -358,6 +362,8 @@ public static class QuickGit
                 "git push"
           }, gitDirectoryPath);
     }
+    
+
     public static void AddCommitAndPush(string gitDirectoryPath, string commitDescription = "")
     {
         if (string.IsNullOrWhiteSpace(commitDescription))
@@ -373,7 +379,7 @@ public static class QuickGit
 
     public static void CreateLocal(string directoryPath)
     {
-        Directory.CreateDirectory(directoryPath);
+        System.IO.Directory.CreateDirectory(directoryPath);
         WindowCMD.RunCommands(new string[] {
                 GetAddSaveCommandAsString(directoryPath),
                 "git init .",
