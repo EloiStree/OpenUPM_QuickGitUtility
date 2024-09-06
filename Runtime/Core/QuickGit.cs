@@ -334,7 +334,11 @@ public static class QuickGit
 
     }
     public static string GetAddSaveCommandAsString(string gitDirectoryPath) {
-        return "git config --global --add safe.directory \"" + gitDirectoryPath + "\"";
+
+        string p = "git config --global --add safe.directory \"" + gitDirectoryPath + "\"";
+        p= p.Replace("\\", "/");
+        Debug.Log(p);
+        return p;
     }
 
     public static void AddCommitPull(string gitDirectoryPath, string commitDescription = "")
