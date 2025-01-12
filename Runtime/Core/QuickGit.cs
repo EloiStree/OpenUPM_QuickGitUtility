@@ -337,7 +337,7 @@ public static class QuickGit
 
         string p = "git config --global --add safe.directory \"" + gitDirectoryPath + "\"";
         p= p.Replace("\\", "/");
-        Debug.Log(p);
+        //Debug.Log(p);
         return p;
     }
 
