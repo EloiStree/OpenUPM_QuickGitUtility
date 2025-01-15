@@ -1,7 +1,7 @@
 {
     "name": "be.elab.quickgitutility",
     "displayName": "Quick Git Utility",
-    "version": "0.0.1",
+    "version": "2025.1.16",
     "unity": "2018.1",
     "description": "Tools to execute git instructions from command line.",
     "keywords": [
