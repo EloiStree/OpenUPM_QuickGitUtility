@@ -21,7 +21,7 @@ public class GitEditorDrawer
         }
     }
 
-
+    public static string m_commitLabel;
     public static void DisplayGitCommands(GitLinkOnDisk gitDirectory)
     {
         bool hasUrl = gitDirectory.HasUrl();
@@ -48,13 +48,18 @@ public class GitEditorDrawer
 
             GUILayout.EndHorizontal();
             GUILayout.BeginHorizontal();
+
+            m_commitLabel = GUILayout.TextField(m_commitLabel);
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
             if (hasUrl && GUILayout.Button("Add>Commit>Pull"))
             {
                 QuickGit.AddCommitAndPush(gitDirectory.GetDirectoryPath());
             }
             if (hasUrl && GUILayout.Button("A>C>Pull + A>C>push"))
             {
-                QuickGit.PullPushWithAddAndCommit(gitDirectory.GetDirectoryPath());
+                QuickGit.PullPushWithAddAndCommit(gitDirectory.GetDirectoryPath(), m_commitLabel);
             }
 
             GUILayout.EndHorizontal();

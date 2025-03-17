@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using UnityEngine;
@@ -307,9 +308,9 @@ public static class QuickGit
           }, gitDirectoryPath);
     }
 
-    private static string GetTime()
+    public static string GetTime()
     {
-        return DateTime.Now.ToString("MM\\/dd\\/yyyy h\\:mm tt");
+        return DateTime.Now.ToString("yyyy_MM_dd_HH_mm", CultureInfo.InvariantCulture);
     }
 
     public static void Push(string gitDirectoryPath)
@@ -356,6 +357,7 @@ public static class QuickGit
     {
         if (string.IsNullOrWhiteSpace(commitDescription))
             commitDescription = GetTime();
+
         WindowCMD.RunCommands(new string[] {
                 GetAddSaveCommandAsString(gitDirectoryPath),
                 "git add -A",
