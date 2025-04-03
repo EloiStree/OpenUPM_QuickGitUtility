@@ -5,78 +5,82 @@ using System.IO;
 using System.Net;
 using System.Text;
 using UnityEngine;
-
-public class DownloadWebPage 
+namespace Eloi.Git
 {
 
-
-    public static string DownloadPageWithWebClient(string url)
+    public class DownloadWebPage
     {
-        try
+
+
+        public static string DownloadPageWithWebClient(string url)
         {
-            WebClient client = new WebClient(); 
-            client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
-            client.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
-
-            //client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
-            Stream data = client.OpenRead(url);
-            StreamReader reader = new StreamReader(data);
-            string s = reader.ReadToEnd();
-            return s;
-        }
-        catch (Exception)
-        {
-            return "";
-        }
-    }
-
-    public static string DownloadPageWithSuccess(string url, out bool succedToLoad, out string errorMessage)
-    {
-        errorMessage = "";
-        string result = "";
-        succedToLoad = false;
-        HttpWebRequest request = null;
-        HttpWebResponse response = null;
-        Stream receiveStream = null;
-        StreamReader readStream = null;
-        try
-        {
-            string data = "";
-            request = (HttpWebRequest)WebRequest.Create(url);
-
-            response = (HttpWebResponse)request.GetResponse();
-
-            if (response.StatusCode == HttpStatusCode.OK)
+            try
             {
-                receiveStream = response.GetResponseStream();
-                readStream = null;
+                WebClient client = new WebClient();
+                client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
+                client.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
 
-                if (response.CharacterSet == null)
-                    readStream = new StreamReader(receiveStream);
-                else
-                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
-
-                data = readStream.ReadToEnd();
-                succedToLoad = true;
+                //client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
+                Stream data = client.OpenRead(url);
+                StreamReader reader = new StreamReader(data);
+                string s = reader.ReadToEnd();
+                return s;
             }
-            else {
-
-                errorMessage = "Status:" + response.StatusDescription;
+            catch (Exception)
+            {
+                return "";
             }
-            result = data;
         }
-        catch (Exception e)
+
+        public static string DownloadPageWithSuccess(string url, out bool succedToLoad, out string errorMessage)
         {
-            errorMessage = "Exception:" + e.StackTrace;
+            errorMessage = "";
+            string result = "";
             succedToLoad = false;
+            HttpWebRequest request = null;
+            HttpWebResponse response = null;
+            Stream receiveStream = null;
+            StreamReader readStream = null;
+            try
+            {
+                string data = "";
+                request = (HttpWebRequest)WebRequest.Create(url);
+
+                response = (HttpWebResponse)request.GetResponse();
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    receiveStream = response.GetResponseStream();
+                    readStream = null;
+
+                    if (response.CharacterSet == null)
+                        readStream = new StreamReader(receiveStream);
+                    else
+                        readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+
+                    data = readStream.ReadToEnd();
+                    succedToLoad = true;
+                }
+                else
+                {
+
+                    errorMessage = "Status:" + response.StatusDescription;
+                }
+                result = data;
+            }
+            catch (Exception e)
+            {
+                errorMessage = "Exception:" + e.StackTrace;
+                succedToLoad = false;
+            }
+            finally
+            {
+                if (response != null)
+                    response.Close();
+                if (readStream != null)
+                    readStream.Close();
+            }
+            return result;
         }
-        finally
-        {
-            if (response != null)
-                response.Close();
-            if (readStream != null)
-                readStream.Close();
-        }
-        return result;
     }
 }

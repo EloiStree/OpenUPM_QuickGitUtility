@@ -3,119 +3,122 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
-public class GitEditorDrawer
+namespace Eloi.Git
 {
 
-
-    public static void DisplayGitInfoWithCommand(GitLinkOnDisk gitDirectory, ref bool displayInfo, ref bool displayAdvance)
+    public class GitEditorDrawer
     {
-        if (displayInfo = EditorGUILayout.Foldout(displayInfo, "Git: " + gitDirectory.GetName() ))
-        {
 
-            DisplayGitLink(gitDirectory);
-            if (displayAdvance = EditorGUILayout.Foldout(displayAdvance, "  Git Commands"))
+
+        public static void DisplayGitInfoWithCommand(GitLinkOnDisk gitDirectory, ref bool displayInfo, ref bool displayAdvance)
+        {
+            if (displayInfo = EditorGUILayout.Foldout(displayInfo, "Git: " + gitDirectory.GetName()))
             {
+
+                DisplayGitLink(gitDirectory);
+                if (displayAdvance = EditorGUILayout.Foldout(displayAdvance, "  Git Commands"))
+                {
                     DisplayGitCommands(gitDirectory);
+                }
             }
         }
-    }
 
-    public static string m_commitLabel;
-    public static void DisplayGitCommands(GitLinkOnDisk gitDirectory)
-    {
-        bool hasUrl = gitDirectory.HasUrl();
-
-        if (gitDirectory.Exist())
+        public static string m_commitLabel;
+        public static void DisplayGitCommands(GitLinkOnDisk gitDirectory)
         {
+            bool hasUrl = gitDirectory.HasUrl();
+
+            if (gitDirectory.Exist())
+            {
+                GUILayout.BeginHorizontal();
+                if (GUILayout.Button("Add -a"))
+                {
+                    QuickGit.Add(gitDirectory.GetDirectoryPath());
+                }
+                if (GUILayout.Button("Commit"))
+                {
+                    QuickGit.Commit(gitDirectory.GetDirectoryPath());
+                }
+                if (hasUrl && GUILayout.Button("Pull"))
+                {
+                    QuickGit.Pull(gitDirectory.GetDirectoryPath());
+                }
+                if (hasUrl && GUILayout.Button("Push"))
+                {
+                    QuickGit.Push(gitDirectory.GetDirectoryPath());
+                }
+
+                GUILayout.EndHorizontal();
+                GUILayout.BeginHorizontal();
+
+                m_commitLabel = GUILayout.TextField(m_commitLabel);
+                GUILayout.EndHorizontal();
+
+                GUILayout.BeginHorizontal();
+                if (hasUrl && GUILayout.Button("Add>Commit>Pull"))
+                {
+                    QuickGit.AddCommitAndPush(gitDirectory.GetDirectoryPath());
+                }
+                if (hasUrl && GUILayout.Button("A>C>Pull + A>C>push"))
+                {
+                    QuickGit.PullPushWithAddAndCommit(gitDirectory.GetDirectoryPath(), m_commitLabel);
+                }
+
+                GUILayout.EndHorizontal();
+                GUILayout.BeginHorizontal();
+                if (GUILayout.Button("Open explorer"))
+                {
+                    Application.OpenURL(gitDirectory.GetDirectoryPath());
+                }
+                if (GUILayout.Button("See Status"))
+                {
+                    QuickGit.OpenCmd(gitDirectory.GetDirectoryPath());
+                }
+                if (hasUrl && GUILayout.Button("Go to Server"))
+                {
+                    Application.OpenURL(gitDirectory.GetUrl());
+                }
+
+                GUILayout.EndHorizontal();
+
+            }
+
+
+
+        }
+
+        public static void DisplayGitLink(GitLinkOnDisk git)
+        {
+            GUIStyle button = new GUIStyle(GUI.skin.button);
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Add -a"))
+            if (GUILayout.Button("> Git:", button, GUILayout.MaxWidth(50)))
             {
-                QuickGit.Add(gitDirectory.GetDirectoryPath());
+                Application.OpenURL(git.GetUrl());
             }
-            if (GUILayout.Button("Commit"))
+            EditorGUILayout.TextField(git.GetUrl());
+            if (GUILayout.Button("> Path:", new GUIStyle(GUI.skin.button), GUILayout.MaxWidth(50)))
             {
-                QuickGit.Commit(gitDirectory.GetDirectoryPath());
+                Application.OpenURL(git.GetDirectoryPath());
             }
-            if (hasUrl && GUILayout.Button("Pull"))
-            {
-                QuickGit.Pull(gitDirectory.GetDirectoryPath());
-            }
-            if (hasUrl && GUILayout.Button("Push"))
-            {
-                QuickGit.Push(gitDirectory.GetDirectoryPath());
-            }
-
+            EditorGUILayout.TextField(git.GetDirectoryPath());
             GUILayout.EndHorizontal();
-            GUILayout.BeginHorizontal();
-
-            m_commitLabel = GUILayout.TextField(m_commitLabel);
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
-            if (hasUrl && GUILayout.Button("Add>Commit>Pull"))
-            {
-                QuickGit.AddCommitAndPush(gitDirectory.GetDirectoryPath());
-            }
-            if (hasUrl && GUILayout.Button("A>C>Pull + A>C>push"))
-            {
-                QuickGit.PullPushWithAddAndCommit(gitDirectory.GetDirectoryPath(), m_commitLabel);
-            }
-
-            GUILayout.EndHorizontal();
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Open explorer"))
-            {
-                Application.OpenURL(gitDirectory.GetDirectoryPath());
-            }
-            if (GUILayout.Button("See Status"))
-            {
-                QuickGit.OpenCmd(gitDirectory.GetDirectoryPath());
-            }
-            if (hasUrl && GUILayout.Button("Go to Server"))
-            {
-                Application.OpenURL(gitDirectory.GetUrl());
-            }
-
-            GUILayout.EndHorizontal();
-
         }
 
-
-
-    }
-
-    public static void DisplayGitLink(GitLinkOnDisk git)
-    {
-        GUIStyle button = new GUIStyle(GUI.skin.button);
-        GUILayout.BeginHorizontal();
-        if (GUILayout.Button("> Git:", button, GUILayout.MaxWidth(50)))
+        public static void ButtonDeleteEmptyFiles(string absolutPath)
         {
-            Application.OpenURL(git.GetUrl());
+            if (GUILayout.Button("Delete Empty folder in directory"))
+            {
+                QuickGit.RemoveAllEmptyFolders(absolutPath);
+                AssetDatabase.Refresh();
+            }
         }
-        EditorGUILayout.TextField(git.GetUrl());
-        if (GUILayout.Button("> Path:", new GUIStyle(GUI.skin.button), GUILayout.MaxWidth(50)))
+        public static void ButtonRefreshGitKeeper(string absolutPath)
         {
-            Application.OpenURL(git.GetDirectoryPath());
-        }
-        EditorGUILayout.TextField(git.GetDirectoryPath());
-        GUILayout.EndHorizontal();
-    }
-
-    public static void ButtonDeleteEmptyFiles(string absolutPath)
-    {
-        if (GUILayout.Button("Delete Empty folder in directory"))
-        {
-            QuickGit.RemoveAllEmptyFolders(absolutPath);
-            AssetDatabase.Refresh();
-        }
-    }
-    public static void ButtonRefreshGitKeeper(string absolutPath)
-    {
-        if (GUILayout.Button("Refresh gitkeep in directory"))
-        {
-            QuickGit.RefreshGitKeepInEmptyFolder(absolutPath);
-            AssetDatabase.Refresh();
+            if (GUILayout.Button("Refresh gitkeep in directory"))
+            {
+                QuickGit.RefreshGitKeepInEmptyFolder(absolutPath);
+                AssetDatabase.Refresh();
+            }
         }
     }
 }

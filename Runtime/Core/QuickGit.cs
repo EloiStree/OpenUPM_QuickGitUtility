@@ -5,7 +5,9 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-public static class QuickGit
+namespace Eloi.Git
+{
+    public static class QuickGit
 {
 
     public static void RemoveAllEmptyFolders(string wherePath)
@@ -778,3 +780,5 @@ public class GitLinkOnDisk : GitLink
 }
 
 
+
+}
