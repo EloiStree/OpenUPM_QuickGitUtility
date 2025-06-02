@@ -6,12 +6,9 @@ using System.Net.Http.Headers;
 using UnityEngine;
 namespace Eloi.Git
 {
-
     public class PublicGitHub
     {
-
         //users/EloiStree/repos?page=1&per_page=100
-
         public static string m_gitLinkAPI = "https://api.github.com/";
 
 

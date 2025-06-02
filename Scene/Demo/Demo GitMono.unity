@@ -1,0 +1,913 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 10
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 1
+    m_PVRDenoiserTypeIndirect: 1
+    m_PVRDenoiserTypeAO: 1
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 1
+    m_PVRFilteringGaussRadiusAO: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingSettings: {fileID: 0}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 3
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    buildHeightMesh: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &71526998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 71527000}
+  - component: {fileID: 71526999}
+  m_Layer: 0
+  m_Name: Remove Git in folder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &71526999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71526998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5430ae8234d2644f8125d57838cee35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_folderPath: C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup
+  m_removeType: 1
+  directories:
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\dylnur
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\jarmych
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\JorgeeHdeez
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MaxPFT
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\nathsoupart
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\RobertLibert
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Ryuuwn420
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\SaberArtoria200
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Sanad4Code
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\SebastVer
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\dylnur\2025_04_17_BonjourPiouPiouMap
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_BlocksColor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_FindMissingScript
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_02_FacadePrimitiveValueRelay
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_14_WheelShipForFun
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_KillAllHumansAbduction
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_Quai10PiouPiouAttackSetup
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_BonjourPiouPiouMap
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_BonjourPiouPiouMapGroup
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_KillAllHumansByAbductionOVNI
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_TickCollection
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_UnityFetchOffsetNTP
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\jarmych\2025_04_17_BonjourPiouMap
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\JorgeeHdeez\2025_04_17_BonjourPiouPiouMap
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_170_BonjourPiouPiou
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_18_Quai10TechnoMeasure
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MaxPFT\2025_04_17_HelloPiouPiouMap
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\nathsoupart\2025_04_17_BonjourPiouPiouMap
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\RobertLibert\2025_04_17_BonjourPiouPiouMap
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Ryuuwn420\2025_04_15BonjourPiouPiouMap
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\SaberArtoria200\2025_04_18_PiouPiouMap
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Sanad4Code\2025_04_17_BonjourPiouPiouMap
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\SebastVer\2025_04_17_BonjourPiouPiouMap
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\dylnur\2025_04_17_BonjourPiouPiouMap\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\dylnur\2025_04_17_BonjourPiouPiouMap\PreFab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\dylnur\2025_04_17_BonjourPiouPiouMap\runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Documentation~
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Sample~
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Test~
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_BlocksColor\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_BlocksColor\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_BlocksColor\Material
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_BlocksColor\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_BlocksColor\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_BlocksColor\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_FindMissingScript\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_FindMissingScript\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_FindMissingScript\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\Manual
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\UI
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_02_FacadePrimitiveValueRelay\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_02_FacadePrimitiveValueRelay\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_02_FacadePrimitiveValueRelay\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_14_WheelShipForFun\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_14_WheelShipForFun\3D
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_14_WheelShipForFun\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_14_WheelShipForFun\Materials
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_14_WheelShipForFun\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_14_WheelShipForFun\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_14_WheelShipForFun\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_14_WheelShipForFun\Texture
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Assets
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_KillAllHumansAbduction\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_KillAllHumansAbduction\Input
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_KillAllHumansAbduction\Material
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_KillAllHumansAbduction\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_KillAllHumansAbduction\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_KillAllHumansAbduction\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_Quai10PiouPiouAttackSetup\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_Quai10PiouPiouAttackSetup\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_Quai10PiouPiouAttackSetup\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_Quai10PiouPiouAttackSetup\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_Quai10PiouPiouAttackSetup\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\3D
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\Input
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_BonjourPiouPiouMap\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_BonjourPiouPiouMap\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_BonjourPiouPiouMap\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_BonjourPiouPiouMap\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_BonjourPiouPiouMapGroup\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_BonjourPiouPiouMapGroup\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_BonjourPiouPiouMapGroup\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_KillAllHumansByAbductionOVNI\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_KillAllHumansByAbductionOVNI\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_KillAllHumansByAbductionOVNI\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_KillAllHumansByAbductionOVNI\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_KillAllHumansByAbductionOVNI\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_TickCollection\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_TickCollection\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_TickCollection\Input
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_TickCollection\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_TickCollection\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_UnityFetchOffsetNTP\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_UnityFetchOffsetNTP\Assets
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_UnityFetchOffsetNTP\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_UnityFetchOffsetNTP\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_UnityFetchOffsetNTP\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_UnityFetchOffsetNTP\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\jarmych\2025_04_17_BonjourPiouMap\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\jarmych\2025_04_17_BonjourPiouMap\3D
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\jarmych\2025_04_17_BonjourPiouMap\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\jarmych\2025_04_17_BonjourPiouMap\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\jarmych\2025_04_17_BonjourPiouMap\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\JorgeeHdeez\2025_04_17_BonjourPiouPiouMap\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\JorgeeHdeez\2025_04_17_BonjourPiouPiouMap\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\JorgeeHdeez\2025_04_17_BonjourPiouPiouMap\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\JorgeeHdeez\2025_04_17_BonjourPiouPiouMap\scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_170_BonjourPiouPiou\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_170_BonjourPiouPiou\prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_170_BonjourPiouPiou\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_170_BonjourPiouPiou\scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_18_Quai10TechnoMeasure\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_18_Quai10TechnoMeasure\3D
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_18_Quai10TechnoMeasure\Editor
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_18_Quai10TechnoMeasure\Material
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_18_Quai10TechnoMeasure\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_18_Quai10TechnoMeasure\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MaxPFT\2025_04_17_HelloPiouPiouMap\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MaxPFT\2025_04_17_HelloPiouPiouMap\Mat
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MaxPFT\2025_04_17_HelloPiouPiouMap\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MaxPFT\2025_04_17_HelloPiouPiouMap\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MaxPFT\2025_04_17_HelloPiouPiouMap\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\nathsoupart\2025_04_17_BonjourPiouPiouMap\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\nathsoupart\2025_04_17_BonjourPiouPiouMap\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\nathsoupart\2025_04_17_BonjourPiouPiouMap\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\nathsoupart\2025_04_17_BonjourPiouPiouMap\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\RobertLibert\2025_04_17_BonjourPiouPiouMap\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\RobertLibert\2025_04_17_BonjourPiouPiouMap\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\RobertLibert\2025_04_17_BonjourPiouPiouMap\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\RobertLibert\2025_04_17_BonjourPiouPiouMap\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Ryuuwn420\2025_04_15BonjourPiouPiouMap\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Ryuuwn420\2025_04_15BonjourPiouPiouMap\3D
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Ryuuwn420\2025_04_15BonjourPiouPiouMap\prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Ryuuwn420\2025_04_15BonjourPiouPiouMap\Resources
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Ryuuwn420\2025_04_15BonjourPiouPiouMap\scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\SaberArtoria200\2025_04_18_PiouPiouMap\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Sanad4Code\2025_04_17_BonjourPiouPiouMap\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Sanad4Code\2025_04_17_BonjourPiouPiouMap\FBX
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Sanad4Code\2025_04_17_BonjourPiouPiouMap\prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Sanad4Code\2025_04_17_BonjourPiouPiouMap\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Sanad4Code\2025_04_17_BonjourPiouPiouMap\scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\SebastVer\2025_04_17_BonjourPiouPiouMap\.giti
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\SebastVer\2025_04_17_BonjourPiouPiouMap\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\SebastVer\2025_04_17_BonjourPiouPiouMap\Runtime
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\SebastVer\2025_04_17_BonjourPiouPiouMap\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\dylnur\2025_04_17_BonjourPiouPiouMap\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Editor\Bean
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Editor\Code
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Editor\Drawer
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Editor\Gistable
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Editor\PublicAPI
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Editor\Window
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Runtime\Core
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Runtime\Gistable
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Runtime\GitMono
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Runtime\Parser
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\Runtime\PublicAPI
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Achived
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\UnitySpecific
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Archived
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Resources
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Script
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\ScriptableExample
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_BlocksColor\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_BlocksColor\Material\Lit
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_BlocksColor\Material\Unlit
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_BlocksColor\Scene\Demo
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_FindMissingScript\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\Manual\Note
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\Prefab\5MinutesLooping
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\Prefab\TimeTravelExperiment
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\Prefab\Wrist
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\Scene\Demo
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\Scene\OuterWilds
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\UI\Materials
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_02_FacadePrimitiveValueRelay\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_02_FacadePrimitiveValueRelay\Runtime\Abstract
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_02_FacadePrimitiveValueRelay\Runtime\Array
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_02_FacadePrimitiveValueRelay\Runtime\List
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_02_FacadePrimitiveValueRelay\Runtime\Primitive
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_14_WheelShipForFun\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_14_WheelShipForFun\Scene\Demo
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Assets\3D
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Prefab\Ray
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Scene\Demo
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_KillAllHumansAbduction\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_KillAllHumansAbduction\Prefab\MockUP
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_KillAllHumansAbduction\Prefab\Spawnable
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_KillAllHumansAbduction\Prefab\UI
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_KillAllHumansAbduction\Runtime\HelloUnity
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_Quai10PiouPiouAttackSetup\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_Quai10PiouPiouAttackSetup\Scene\Demo
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\3D\Archive
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\3D\MATERIALS
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\3D\MODELS
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\3D\PREFABS
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\3D\TEXTURES
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\Prefab\Group
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\Runtime\Diaporama
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\Scene\Demo
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_BonjourPiouPiouMap\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_BonjourPiouPiouMapGroup\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_KillAllHumansByAbductionOVNI\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_KillAllHumansByAbductionOVNI\Scene\Demo
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\Editor\DeveloperNote
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\Runtime\Bin
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\Runtime\Core
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\Runtime\Credit
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\Runtime\Enum
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\Runtime\Note
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\Runtime\NoteMono
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_TickCollection\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_TickCollection\Scene\Demo
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_UnityFetchOffsetNTP\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_UnityFetchOffsetNTP\Assets\2D
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\jarmych\2025_04_17_BonjourPiouMap\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\JorgeeHdeez\2025_04_17_BonjourPiouPiouMap\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_170_BonjourPiouPiou\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_18_Quai10TechnoMeasure\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MaxPFT\2025_04_17_HelloPiouPiouMap\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\nathsoupart\2025_04_17_BonjourPiouPiouMap\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\RobertLibert\2025_04_17_BonjourPiouPiouMap\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Ryuuwn420\2025_04_15BonjourPiouPiouMap\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\SaberArtoria200\2025_04_18_PiouPiouMap\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Sanad4Code\2025_04_17_BonjourPiouPiouMap\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\SebastVer\2025_04_17_BonjourPiouPiouMap\.giti\objects
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\dylnur\2025_04_17_BonjourPiouPiouMap\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_QuickGitUtility\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Achived\V0
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\Builder
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\Drawer
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\InitBuilder
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\PackageManager
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\Selection
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\Unstore
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Archived\V0
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Prefab\Manifrest
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Prefab\Packages
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Resources\Links
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Resources\PackageJson
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Script\Builder
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Script\JSON
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Script\Shared
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\ScriptableExample\Contact
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\ScriptableExample\Directories
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\ScriptableExample\Git
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\ScriptableExample\Group
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\ScriptableExample\Links
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\ScriptableExample\Package
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_BlocksColor\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2024_10_16_FindMissingScript\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\Scene\OuterWilds\Material
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_02_17_TimePercentInterface\Scene\OuterWilds\Prefab
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_02_FacadePrimitiveValueRelay\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_14_WheelShipForFun\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Assets\3D\Aduction
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Assets\3D\CapsulePilote
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Assets\3D\Ship
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_KillAllHumansAbduction\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_Quai10PiouPiouAttackSetup\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_16_TechnoChickArtXR\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_BonjourPiouPiouMap\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_BonjourPiouPiouMapGroup\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_17_KillAllHumansByAbductionOVNI\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\Editor\DeveloperNote\Custom
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_TickCollection\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_UnityFetchOffsetNTP\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\jarmych\2025_04_17_BonjourPiouMap\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\JorgeeHdeez\2025_04_17_BonjourPiouPiouMap\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_170_BonjourPiouPiou\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MarvinRoland\2025_04_18_Quai10TechnoMeasure\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\MaxPFT\2025_04_17_HelloPiouPiouMap\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\nathsoupart\2025_04_17_BonjourPiouPiouMap\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\RobertLibert\2025_04_17_BonjourPiouPiouMap\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Ryuuwn420\2025_04_15BonjourPiouPiouMap\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\SaberArtoria200\2025_04_18_PiouPiouMap\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\Sanad4Code\2025_04_17_BonjourPiouPiouMap\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\SebastVer\2025_04_17_BonjourPiouPiouMap\.giti\objects\pack
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Achived\V0\Scritable
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\PackageManager\ChangeLog
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\PackageManager\Documentation
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\PackageManager\Git
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\PackageManager\License
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\PackageManager\ManifestJson
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\PackageManager\PackageJson
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\PackageManager\ReadMe
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\PackageManager\Sample
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Editor\Script\Unstore\Gistable
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Archived\V0\Scene
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Script\JSON\ManifestJson
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Script\JSON\PackageJson
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2019_07_21_UnityPackageFacilitator\Runtime\Script\Shared\Gist
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Assets\3D\Aduction\Materials
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Assets\3D\Aduction\Mesh
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Assets\3D\Aduction\Texture
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Assets\3D\CapsulePilote\Material
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Assets\3D\Ship\Materials
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Assets\3D\Ship\Mesh
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\2025_04_15_KidToyOvniCode\Assets\3D\Ship\Texture
+  - C:\U\Client\Technocite\2025_04_18_LTS_BonjourPiouXR\PackagesBackup\EloiStree\OpenUPM_DeveloperNote\Editor\DeveloperNote\Custom\Bin
+  folderToRemove: []
+--- !u!4 &71527000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71526998}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.59594125, y: 0.734399, z: 0.9292394}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &142777801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 142777804}
+  - component: {fileID: 142777803}
+  - component: {fileID: 142777802}
+  m_Layer: 0
+  m_Name: Get Git Clone Sample
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &142777802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142777801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48ca64bae5187c4cb9ecc6a22e7a314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gitLinks: "https://github.com/dylnur/2025_04_17_BonjourPiouPiouMap.git\n\rhttps://github.com/EloiStree/2019_07_21_QuickGitUtility.git\n\rhttps://github.com/EloiStree/2019_07_21_UnityPackageFacilitator.git\n\rhttps://github.com/EloiStree/2024_10_16_BlocksColor.git\n\rhttps://github.com/EloiStree/2024_10_16_FindMissingScript.git\n\rhttps://github.com/EloiStree/2025_02_17_TimePercentInterface.git\n\rhttps://github.com/EloiStree/2025_04_02_FacadePrimitiveValueRelay.git\n\rhttps://github.com/EloiStree/2025_04_14_WheelShipForFun.git\n\rhttps://github.com/EloiStree/2025_04_15_KidToyOvniCode.git\n\rhttps://github.com/EloiStree/2025_04_16_KillAllHumansAbduction.git\n\rhttps://github.com/EloiStree/2025_04_16_Quai10PiouPiouAttackSetup.git\n\rhttps://github.com/EloiStree/2025_04_16_TechnoChickArtXR.git\n\rhttps://github.com/EloiStree/2025_04_17_BonjourPiouPiouMap.git\n\rhttps://github.com/EloiStree/2025_04_17_BonjourPiouPiouMapGroup.git\n\rhttps://github.com/EloiStree/2025_04_17_KillAllHumansByAbductionOVNI.git\n\rhttps://github.com/EloiStree/OpenUPM_DeveloperNote.git\n\rhttps://github.com/EloiStree/OpenUPM_TickCollection.git\n\rhttps://github.com/EloiStree/OpenUPM_UnityFetchOffsetNTP.git\n\rhttps://github.com/jarmych/2025_04_17_BonjourPiouMap.git\n\rhttps://github.com/JorgeeHdeez/2025_04_17_BonjourPiouPiouMap.git\n\rhttps://github.com/MarvinRoland/2025_04_170_BonjourPiouPiou.git\n\rhttps://github.com/MarvinRoland/2025_04_18_Quai10TechnoMeasure.git\n\rhttps://github.com/MaxPFT/2025_04_17_HelloPiouPiouMap.git\n\rhttps://github.com/nathsoupart/2025_04_17_BonjourPiouPiouMap.git\n\rhttps://github.com/RobertLibert/2025_04_17_BonjourPiouPiouMap.git\n\rhttps://github.com/Ryuuwn420/2025_04_15BonjourPiouPiouMap.git\n\rhttps://github.com/SaberArtoria200/2025_04_18_PiouPiouMap.git\n\rhttps://github.com/Sanad4Code/2025_04_17_BonjourPiouPiouMap.git\n\rhttps://github.com/SebastVer/2025_04_17_BonjourPiouPiouMap.git\n\r"
+  m_gitLinksList:
+  - https://github.com/dylnur/2025_04_17_BonjourPiouPiouMap.git
+  - "\rhttps://github.com/EloiStree/2019_07_21_QuickGitUtility.git"
+  - "\rhttps://github.com/EloiStree/2019_07_21_UnityPackageFacilitator.git"
+  - "\rhttps://github.com/EloiStree/2024_10_16_BlocksColor.git"
+  - "\rhttps://github.com/EloiStree/2024_10_16_FindMissingScript.git"
+  - "\rhttps://github.com/EloiStree/2025_02_17_TimePercentInterface.git"
+  - "\rhttps://github.com/EloiStree/2025_04_02_FacadePrimitiveValueRelay.git"
+  - "\rhttps://github.com/EloiStree/2025_04_14_WheelShipForFun.git"
+  - "\rhttps://github.com/EloiStree/2025_04_15_KidToyOvniCode.git"
+  - "\rhttps://github.com/EloiStree/2025_04_16_KillAllHumansAbduction.git"
+  - "\rhttps://github.com/EloiStree/2025_04_16_Quai10PiouPiouAttackSetup.git"
+  - "\rhttps://github.com/EloiStree/2025_04_16_TechnoChickArtXR.git"
+  - "\rhttps://github.com/EloiStree/2025_04_17_BonjourPiouPiouMap.git"
+  - "\rhttps://github.com/EloiStree/2025_04_17_BonjourPiouPiouMapGroup.git"
+  - "\rhttps://github.com/EloiStree/2025_04_17_KillAllHumansByAbductionOVNI.git"
+  - "\rhttps://github.com/EloiStree/OpenUPM_DeveloperNote.git"
+  - "\rhttps://github.com/EloiStree/OpenUPM_TickCollection.git"
+  - "\rhttps://github.com/EloiStree/OpenUPM_UnityFetchOffsetNTP.git"
+  - "\rhttps://github.com/jarmych/2025_04_17_BonjourPiouMap.git"
+  - "\rhttps://github.com/JorgeeHdeez/2025_04_17_BonjourPiouPiouMap.git"
+  - "\rhttps://github.com/MarvinRoland/2025_04_170_BonjourPiouPiou.git"
+  - "\rhttps://github.com/MarvinRoland/2025_04_18_Quai10TechnoMeasure.git"
+  - "\rhttps://github.com/MaxPFT/2025_04_17_HelloPiouPiouMap.git"
+  - "\rhttps://github.com/nathsoupart/2025_04_17_BonjourPiouPiouMap.git"
+  - "\rhttps://github.com/RobertLibert/2025_04_17_BonjourPiouPiouMap.git"
+  - "\rhttps://github.com/Ryuuwn420/2025_04_15BonjourPiouPiouMap.git"
+  - "\rhttps://github.com/SaberArtoria200/2025_04_18_PiouPiouMap.git"
+  - "\rhttps://github.com/Sanad4Code/2025_04_17_BonjourPiouPiouMap.git"
+  - "\rhttps://github.com/SebastVer/2025_04_17_BonjourPiouPiouMap.git"
+  - "\r"
+  m_gitLinksClonable: "git clone https://github.com/dylnur/2025_04_17_BonjourPiouPiouMap.git
+    dylnur/2025_04_17_BonjourPiouPiouMap\n\rgit clone https://github.com/EloiStree/2019_07_21_QuickGitUtility.git
+    EloiStree/2019_07_21_QuickGitUtility\n\rgit clone https://github.com/EloiStree/2019_07_21_UnityPackageFacilitator.git
+    EloiStree/2019_07_21_UnityPackageFacilitator\n\rgit clone https://github.com/EloiStree/2024_10_16_BlocksColor.git
+    EloiStree/2024_10_16_BlocksColor\n\rgit clone https://github.com/EloiStree/2024_10_16_FindMissingScript.git
+    EloiStree/2024_10_16_FindMissingScript\n\rgit clone https://github.com/EloiStree/2025_02_17_TimePercentInterface.git
+    EloiStree/2025_02_17_TimePercentInterface\n\rgit clone https://github.com/EloiStree/2025_04_02_FacadePrimitiveValueRelay.git
+    EloiStree/2025_04_02_FacadePrimitiveValueRelay\n\rgit clone https://github.com/EloiStree/2025_04_14_WheelShipForFun.git
+    EloiStree/2025_04_14_WheelShipForFun\n\rgit clone https://github.com/EloiStree/2025_04_15_KidToyOvniCode.git
+    EloiStree/2025_04_15_KidToyOvniCode\n\rgit clone https://github.com/EloiStree/2025_04_16_KillAllHumansAbduction.git
+    EloiStree/2025_04_16_KillAllHumansAbduction\n\rgit clone https://github.com/EloiStree/2025_04_16_Quai10PiouPiouAttackSetup.git
+    EloiStree/2025_04_16_Quai10PiouPiouAttackSetup\n\rgit clone https://github.com/EloiStree/2025_04_16_TechnoChickArtXR.git
+    EloiStree/2025_04_16_TechnoChickArtXR\n\rgit clone https://github.com/EloiStree/2025_04_17_BonjourPiouPiouMap.git
+    EloiStree/2025_04_17_BonjourPiouPiouMap\n\rgit clone https://github.com/EloiStree/2025_04_17_BonjourPiouPiouMapGroup.git
+    EloiStree/2025_04_17_BonjourPiouPiouMapGroup\n\rgit clone https://github.com/EloiStree/2025_04_17_KillAllHumansByAbductionOVNI.git
+    EloiStree/2025_04_17_KillAllHumansByAbductionOVNI\n\rgit clone https://github.com/EloiStree/OpenUPM_DeveloperNote.git
+    EloiStree/OpenUPM_DeveloperNote\n\rgit clone https://github.com/EloiStree/OpenUPM_TickCollection.git
+    EloiStree/OpenUPM_TickCollection\n\rgit clone https://github.com/EloiStree/OpenUPM_UnityFetchOffsetNTP.git
+    EloiStree/OpenUPM_UnityFetchOffsetNTP\n\rgit clone https://github.com/jarmych/2025_04_17_BonjourPiouMap.git
+    jarmych/2025_04_17_BonjourPiouMap\n\rgit clone https://github.com/JorgeeHdeez/2025_04_17_BonjourPiouPiouMap.git
+    JorgeeHdeez/2025_04_17_BonjourPiouPiouMap\n\rgit clone https://github.com/MarvinRoland/2025_04_170_BonjourPiouPiou.git
+    MarvinRoland/2025_04_170_BonjourPiouPiou\n\rgit clone https://github.com/MarvinRoland/2025_04_18_Quai10TechnoMeasure.git
+    MarvinRoland/2025_04_18_Quai10TechnoMeasure\n\rgit clone https://github.com/MaxPFT/2025_04_17_HelloPiouPiouMap.git
+    MaxPFT/2025_04_17_HelloPiouPiouMap\n\rgit clone https://github.com/nathsoupart/2025_04_17_BonjourPiouPiouMap.git
+    nathsoupart/2025_04_17_BonjourPiouPiouMap\n\rgit clone https://github.com/RobertLibert/2025_04_17_BonjourPiouPiouMap.git
+    RobertLibert/2025_04_17_BonjourPiouPiouMap\n\rgit clone https://github.com/Ryuuwn420/2025_04_15BonjourPiouPiouMap.git
+    Ryuuwn420/2025_04_15BonjourPiouPiouMap\n\rgit clone https://github.com/SaberArtoria200/2025_04_18_PiouPiouMap.git
+    SaberArtoria200/2025_04_18_PiouPiouMap\n\rgit clone https://github.com/Sanad4Code/2025_04_17_BonjourPiouPiouMap.git
+    Sanad4Code/2025_04_17_BonjourPiouPiouMap\n\rgit clone https://github.com/SebastVer/2025_04_17_BonjourPiouPiouMap.git
+    SebastVer/2025_04_17_BonjourPiouPiouMap\n\r"
+--- !u!114 &142777803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142777801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a7d2727e0857c4d91ef2b595fbc86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_textToParse: "{\r\n  \"dependencies\": {\r\n    \"be.alexisdraux.pioupioumap\":
+    \"https://github.com/Sanad4Code/2025_04_17_BonjourPiouPiouMap.git\",\r\n    \"be.dynur.pioupioumap\":
+    \"https://github.com/dylnur/2025_04_17_BonjourPiouPiouMap.git\",\r\n    \"be.elab.blockscolor\":
+    \"https://github.com/EloiStree/2024_10_16_BlocksColor.git\",\r\n    \"be.elab.developernote\":
+    \"https://github.com/EloiStree/OpenUPM_DeveloperNote.git\",\r\n    \"be.elab.killallhumans\":
+    \"https://github.com/EloiStree/2025_04_16_KillAllHumansAbduction.git\",\r\n   
+    \"be.elab.killhumansovni\": \"https://github.com/EloiStree/2025_04_17_KillAllHumansByAbductionOVNI.git\",\r\n   
+    \"be.elab.missingscript\": \"https://github.com/EloiStree/2024_10_16_FindMissingScript.git\",\r\n   
+    \"be.elab.ovnitoy\": \"https://github.com/EloiStree/2025_04_15_KidToyOvniCode.git\",\r\n   
+    \"be.elab.pioupiougroupmap\": \"https://github.com/EloiStree/2025_04_17_BonjourPiouPiouMapGroup.git\",\r\n   
+    \"be.elab.pioupiousetup\": \"https://github.com/EloiStree/2025_04_16_Quai10PiouPiouAttackSetup.git\",\r\n   
+    \"be.elab.primitiverelay\": \"https://github.com/EloiStree/2025_04_02_FacadePrimitiveValueRelay.git\",\r\n   
+    \"be.elab.quickgitutility\": \"https://github.com/EloiStree/2019_07_21_QuickGitUtility.git\",\r\n   
+    \"be.elab.techochickartxr\": \"https://github.com/EloiStree/2025_04_16_TechnoChickArtXR.git\",\r\n   
+    \"be.elab.tickcollection\": \"https://github.com/EloiStree/OpenUPM_TickCollection.git\",\r\n   
+    \"be.elab.timepercent\": \"https://github.com/EloiStree/2025_02_17_TimePercentInterface.git\",\r\n   
+    \"be.elab.unityfetchoffsetntp\": \"https://github.com/EloiStree/OpenUPM_UnityFetchOffsetNTP.git\",\r\n   
+    \"be.elab.unitypackagefacilitator\": \"https://github.com/EloiStree/2019_07_21_UnityPackageFacilitator.git\",\r\n   
+    \"be.elab.wheelshipforfun\": \"https://github.com/EloiStree/2025_04_14_WheelShipForFun.git\",\r\n   
+    \"be.eloistree.pioupioumap\": \"https://github.com/EloiStree/2025_04_17_BonjourPiouPiouMap.git\",\r\n   
+    \"be.jorgeehdeez.pioupioumap\": \"https://github.com/JorgeeHdeez/2025_04_17_BonjourPiouPiouMap.git\",\r\n   
+    \"be.julien.pioupioumap\": \"https://github.com/SaberArtoria200/2025_04_18_PiouPiouMap.git\",\r\n   
+    \"be.marvin.techomeasure\": \"https://github.com/MarvinRoland/2025_04_18_Quai10TechnoMeasure.git\",\r\n   
+    \"be.marvinroland.pioupioumap\": \"https://github.com/MarvinRoland/2025_04_170_BonjourPiouPiou.git\",\r\n   
+    \"be.nathsoupart.pioupioumap\": \"https://github.com/nathsoupart/2025_04_17_BonjourPiouPiouMap.git\",\r\n   
+    \"be.pixawn.chickisland\": \"https://github.com/Ryuuwn420/2025_04_15BonjourPiouPiouMap.git\",\r\n   
+    \"be.poder.pioupioumap\": \"https://github.com/jarmych/2025_04_17_BonjourPiouMap.git\",\r\n   
+    \"be.raftak.pioupioumap\": \"https://github.com/MaxPFT/2025_04_17_HelloPiouPiouMap.git\",\r\n   
+    \"be.robertlibert.pioupioumap\": \"https://github.com/RobertLibert/2025_04_17_BonjourPiouPiouMap.git\",\r\n   
+    \"be.seblucverh.pioupioumap\": \"https://github.com/SebastVer/2025_04_17_BonjourPiouPiouMap.git\",\r\n   
+    \"com.meta.xr.sdk.all\": \"74.0.3\",\r\n    \"com.unity.ai.navigation\": \"2.0.7\",\r\n   
+    \"com.unity.collab-proxy\": \"2.7.1\",\r\n    \"com.unity.ide.rider\": \"3.0.35\",\r\n   
+    \"com.unity.ide.visualstudio\": \"2.0.23\",\r\n    \"com.unity.inputsystem\":
+    \"1.14.0\",\r\n    \"com.unity.multiplayer.center\": \"1.0.0\",\r\n    \"com.unity.probuilder\":
+    \"6.0.5\",\r\n    \"com.unity.render-pipelines.universal\": \"17.0.4\",\r\n   
+    \"com.unity.test-framework\": \"1.5.1\",\r\n    \"com.unity.timeline\": \"1.8.7\",\r\n   
+    \"com.unity.ugui\": \"2.0.0\",\r\n    \"com.unity.visualscripting\": \"1.9.6\",\r\n   
+    \"com.unity.xr.management\": \"4.5.1\",\r\n    \"com.unity.xr.openxr\": \"1.14.3\",\r\n   
+    \"com.unity.modules.accessibility\": \"1.0.0\",\r\n    \"com.unity.modules.ai\":
+    \"1.0.0\",\r\n    \"com.unity.modules.androidjni\": \"1.0.0\",\r\n    \"com.unity.modules.animation\":
+    \"1.0.0\",\r\n    \"com.unity.modules.assetbundle\": \"1.0.0\",\r\n    \"com.unity.modules.audio\":
+    \"1.0.0\",\r\n    \"com.unity.modules.cloth\": \"1.0.0\",\r\n    \"com.unity.modules.director\":
+    \"1.0.0\",\r\n    \"com.unity.modules.imageconversion\": \"1.0.0\",\r\n    \"com.unity.modules.imgui\":
+    \"1.0.0\",\r\n    \"com.unity.modules.jsonserialize\": \"1.0.0\",\r\n    \"com.unity.modules.particlesystem\":
+    \"1.0.0\",\r\n    \"com.unity.modules.physics\": \"1.0.0\",\r\n    \"com.unity.modules.physics2d\":
+    \"1.0.0\",\r\n    \"com.unity.modules.screencapture\": \"1.0.0\",\r\n    \"com.unity.modules.terrain\":
+    \"1.0.0\",\r\n    \"com.unity.modules.terrainphysics\": \"1.0.0\",\r\n    \"com.unity.modules.tilemap\":
+    \"1.0.0\",\r\n    \"com.unity.modules.ui\": \"1.0.0\",\r\n    \"com.unity.modules.uielements\":
+    \"1.0.0\",\r\n    \"com.unity.modules.umbra\": \"1.0.0\",\r\n    \"com.unity.modules.unityanalytics\":
+    \"1.0.0\",\r\n    \"com.unity.modules.unitywebrequest\": \"1.0.0\",\r\n    \"com.unity.modules.unitywebrequestassetbundle\":
+    \"1.0.0\",\r\n    \"com.unity.modules.unitywebrequestaudio\": \"1.0.0\",\r\n   
+    \"com.unity.modules.unitywebrequesttexture\": \"1.0.0\",\r\n    \"com.unity.modules.unitywebrequestwww\":
+    \"1.0.0\",\r\n    \"com.unity.modules.vehicles\": \"1.0.0\",\r\n    \"com.unity.modules.video\":
+    \"1.0.0\",\r\n    \"com.unity.modules.vr\": \"1.0.0\",\r\n    \"com.unity.modules.wind\":
+    \"1.0.0\",\r\n    \"com.unity.modules.xr\": \"1.0.0\"\r\n  }\r\n}\r\n"
+  m_gitLinks: "https://github.com/dylnur/2025_04_17_BonjourPiouPiouMap.git\n\rhttps://github.com/EloiStree/2019_07_21_QuickGitUtility.git\n\rhttps://github.com/EloiStree/2019_07_21_UnityPackageFacilitator.git\n\rhttps://github.com/EloiStree/2024_10_16_BlocksColor.git\n\rhttps://github.com/EloiStree/2024_10_16_FindMissingScript.git\n\rhttps://github.com/EloiStree/2025_02_17_TimePercentInterface.git\n\rhttps://github.com/EloiStree/2025_04_02_FacadePrimitiveValueRelay.git\n\rhttps://github.com/EloiStree/2025_04_14_WheelShipForFun.git\n\rhttps://github.com/EloiStree/2025_04_15_KidToyOvniCode.git\n\rhttps://github.com/EloiStree/2025_04_16_KillAllHumansAbduction.git\n\rhttps://github.com/EloiStree/2025_04_16_Quai10PiouPiouAttackSetup.git\n\rhttps://github.com/EloiStree/2025_04_16_TechnoChickArtXR.git\n\rhttps://github.com/EloiStree/2025_04_17_BonjourPiouPiouMap.git\n\rhttps://github.com/EloiStree/2025_04_17_BonjourPiouPiouMapGroup.git\n\rhttps://github.com/EloiStree/2025_04_17_KillAllHumansByAbductionOVNI.git\n\rhttps://github.com/EloiStree/OpenUPM_DeveloperNote.git\n\rhttps://github.com/EloiStree/OpenUPM_TickCollection.git\n\rhttps://github.com/EloiStree/OpenUPM_UnityFetchOffsetNTP.git\n\rhttps://github.com/jarmych/2025_04_17_BonjourPiouMap.git\n\rhttps://github.com/JorgeeHdeez/2025_04_17_BonjourPiouPiouMap.git\n\rhttps://github.com/MarvinRoland/2025_04_170_BonjourPiouPiou.git\n\rhttps://github.com/MarvinRoland/2025_04_18_Quai10TechnoMeasure.git\n\rhttps://github.com/MaxPFT/2025_04_17_HelloPiouPiouMap.git\n\rhttps://github.com/nathsoupart/2025_04_17_BonjourPiouPiouMap.git\n\rhttps://github.com/RobertLibert/2025_04_17_BonjourPiouPiouMap.git\n\rhttps://github.com/Ryuuwn420/2025_04_15BonjourPiouPiouMap.git\n\rhttps://github.com/SaberArtoria200/2025_04_18_PiouPiouMap.git\n\rhttps://github.com/Sanad4Code/2025_04_17_BonjourPiouPiouMap.git\n\rhttps://github.com/SebastVer/2025_04_17_BonjourPiouPiouMap.git\n\r"
+  m_addCloneCommand: 0
+  m_regexPattern: (https?:\/\/[^\s]+\.git(?:#(?:commit|tag)\/[^\s]+)?)
+--- !u!4 &142777804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142777801}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.59594125, y: 0.734399, z: 0.9292394}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &626931575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 626931578}
+  - component: {fileID: 626931577}
+  - component: {fileID: 626931576}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &626931576
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626931575}
+  m_Enabled: 1
+--- !u!20 &626931577
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626931575}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &626931578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626931575}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1952483824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1952483826}
+  - component: {fileID: 1952483825}
+  - component: {fileID: 1952483827}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1952483825
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952483824}
+  m_Enabled: 1
+  serializedVersion: 11
+  m_Type: 1
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
+--- !u!4 &1952483826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952483824}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1952483827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952483824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 626931578}
+  - {fileID: 1952483826}
+  - {fileID: 142777804}
+  - {fileID: 71527000}
