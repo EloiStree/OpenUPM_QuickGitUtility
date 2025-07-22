@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Text.RegularExpressions;
-using UnityEngine;
 
 namespace Eloi.Git
 {
+    using System.Collections.Generic;
+    using UnityEngine;
+
+
     public class GitMono_RemoveAllDotGitInFolder: MonoBehaviour
     {
         public string m_folderPath;
